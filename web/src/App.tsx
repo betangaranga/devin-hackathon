@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getCell, SAMPLE_ADDRESSES, USE_FIXTURES } from './data'
+import { CityMap } from './map'
+import { AddressSearch } from './search'
 import { PROFILES, profileScore, type ProfileKey } from './profiles'
 import { STATUS_LABEL, status } from './status'
 import { TOPICS } from './topics'
@@ -7,10 +9,9 @@ import type { Cell } from './types'
 
 // Placeholder shell from phase 0. F1 replaces this with the dashboard (docs/design/prototipo-dashboard.html).
 export default function App() {
-  const [addrId, setAddrId] = useState(SAMPLE_ADDRESSES[0].id)
+  const [addr, setAddr] = useState(SAMPLE_ADDRESSES[0])
   const [profile, setProfile] = useState<ProfileKey>('equilibrado')
   const [cell, setCell] = useState<Cell | null>(null)
-  const addr = SAMPLE_ADDRESSES.find((a) => a.id === addrId)!
 
   useEffect(() => {
     getCell(addr.h3).then(setCell)
@@ -21,9 +22,7 @@ export default function App() {
       <h1 className="text-3xl font-semibold">Antes de rentar</h1>
       {USE_FIXTURES && <p className="text-sm text-regular">Datos ficticios (fixtures).</p>}
       <div className="my-4 flex gap-2">
-        <select className="rounded-full border px-3 py-1" value={addrId} onChange={(e) => setAddrId(e.target.value)}>
-          {SAMPLE_ADDRESSES.map((a) => <option key={a.id} value={a.id}>{a.label}</option>)}
-        </select>
+        <AddressSearch value={addr} onSelect={setAddr} />
         <select className="rounded-full bg-ink px-3 py-1 text-white" value={profile} onChange={(e) => setProfile(e.target.value as ProfileKey)}>
           {Object.entries(PROFILES).map(([k, p]) => <option key={k} value={k}>{p.label}</option>)}
         </select>
@@ -44,6 +43,7 @@ export default function App() {
               )
             })}
           </ul>
+          <CityMap className="mt-4 h-64" address={addr} cell={cell} topic="vial" />
         </>
       )}
     </main>
