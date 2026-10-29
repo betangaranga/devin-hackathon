@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Assets generados (p. ej. scripts/copy-maplibre-worker.mjs)
+    "public/**",
   ]),
 ]);
 

@@ -42,6 +42,9 @@ export function MapView({
     if (!protocolRegistered) {
       const protocol = new Protocol();
       maplibregl.addProtocol("pmtiles", protocol.tile);
+      // El worker se sirve desde public/ (ver scripts/copy-maplibre-worker.mjs);
+      // el auto-descubrimiento por import.meta.url no funciona bajo Turbopack.
+      maplibregl.setWorkerUrl("/maplibre-gl-worker.mjs");
       protocolRegistered = true;
     }
     const map = new maplibregl.Map({

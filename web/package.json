@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/gen-topics-index.mjs && next dev",
-    "build": "node scripts/gen-topics-index.mjs && next build",
+    "dev": "node scripts/gen-topics-index.mjs && node scripts/copy-maplibre-worker.mjs && next dev",
+    "build": "node scripts/gen-topics-index.mjs && node scripts/copy-maplibre-worker.mjs && next build",
+    "postinstall": "node scripts/copy-maplibre-worker.mjs",
     "start": "next start",
     "lint": "eslint",
     "topics": "node scripts/gen-topics-index.mjs"
