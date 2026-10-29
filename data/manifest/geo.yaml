@@ -1,4 +1,4 @@
-# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+# Verified against the data-raw-2026-10-29 mirror (CKAN metadata_modified 2026-09-01).
 owner: D1
 portal: https://datos.cdmx.gob.mx
 datasets:
@@ -6,43 +6,39 @@ datasets:
   formats:
   - geojson
   - shp
-  - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: irregular (SHP de feb-2023; recursos actualizados ago-2026)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 1,543 polígonos (1,262 colonias + 281 pueblos y barrios originarios), 16 alcaldías, ~738 km²; solo zona urbana, no cubre el suelo de conservación. Los dos GeoJSON son idénticos. Nombres sin acentos; 22 colonias repetidas (mismo nombre y alcaldía, polígonos separados). 1 geometría inválida (se repara con make_valid).
 - id: codigos-postales
   formats:
   - geojson
   - shp
-  - csv
-  crs: null
+  crs: EPSG:4326 (GeoJSON); el SHP viene en Lambert Conformal Conic INEGI, latin-1
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: irregular (SHP CP_09CDMX_v7 de 2021)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 1,215 CP (columna d_cp, 5 dígitos, sin duplicados), sin traslapes; la unión cubre toda la CDMX (~1,485 km²), por eso se usa como límite de la entidad. Polígonos de SEPOMEX vía datos.gob.mx; pueden no coincidir con el CP de un domicilio puntual.
 - id: caracteristicas-demograficas-de-la-poblacion-ageb-censo-2020
   formats:
   - geojson
   - shp
-  - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: decenal (Censo 2020, marzo 2020)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 2,433 AGEB urbanos (no hay rurales); pob suma 9,145,632 vs 9,209,944 del Censo (faltan ~64 mil rurales). 2 AGEB sin geometría (7,108 hab.) se descartan. El SHP trae total/hombres/mujeres; usamos total (= GeoJSON). Valores confidenciales vienen como NaN en columnas p_*/t_*, pob no tiene nulos.
 - id: caracteristicas-de-las-viviendas-nivel-ageb-censo-2020
   formats:
   - geojson
   - shp
-  - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: decenal (Censo 2020)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: Mismos 2,433 AGEB urbanos que el de población (une por clave ageb); de aquí sale vivtot → columna viviendas de la malla.
