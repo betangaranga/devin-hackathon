@@ -83,6 +83,7 @@ def test_reads_utm_shapefile(grid, tmp_path):
     pd.testing.assert_series_equal(a["metric_raw"], b["metric_raw"], atol=0.02)
 
 
-def test_missing_data_raises(grid, tmp_path):
-    with pytest.raises(FileNotFoundError):
-        ruido.compute(Context(grid=grid, raw_dir=tmp_path))
+def test_missing_data_gives_null_cells(grid, tmp_path):
+    with pytest.warns(UserWarning):
+        out = finalize(ruido.TOPIC, ruido.compute(Context(grid=grid, raw_dir=tmp_path)))
+    assert len(out) == len(grid) and out["metric_raw"].isna().all() and out["score"].isna().all()

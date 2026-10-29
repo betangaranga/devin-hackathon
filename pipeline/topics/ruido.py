@@ -6,6 +6,8 @@ metric_raw is the area-weighted mean level (0-2) inside a disc around each cell 
 so cells near a high-density zone rank worse than cells in the middle of a quiet one.
 Cells whose disc is mostly outside the layer (southern rural CDMX) get null metric/score.
 """
+import warnings
+
 import geopandas as gpd
 import numpy as np
 import pandas as pd
@@ -29,11 +31,12 @@ MIN_COVERAGE = 0.5
 LEVEL_LABELS = {0: "Pocas denuncias de ruido", 1: "Denuncias de ruido moderadas", 2: "Muchas denuncias de ruido"}
 
 
-def load_levels(ctx: Context) -> gpd.GeoDataFrame:
-    """Kernel polygons with an integer `level` column, in EPSG:4326."""
+def load_levels(ctx: Context) -> gpd.GeoDataFrame | None:
+    """Kernel polygons with an integer `level` column, in EPSG:4326. None if the raw data is missing."""
     files = ctx.dataset_files(DATASET, ".json", ".geojson") or ctx.dataset_files(DATASET, ".shp")
     if not files:
-        raise FileNotFoundError(f"no GeoJSON/SHP in {ctx.dataset_dir(DATASET)}; download the data-raw release first")
+        warnings.warn(f"ruido: no GeoJSON/SHP in {ctx.dataset_dir(DATASET)}; download the data-raw release. All cells null.")
+        return None
     gdf = gpd.read_file(files[0])
     if gdf.crs is None:
         gdf = gdf.set_crs(WGS84)
@@ -69,7 +72,10 @@ def cell_levels(levels: gpd.GeoDataFrame, grid: gpd.GeoDataFrame, radius_m: floa
 
 def compute(ctx: Context) -> pd.DataFrame:
     grid = ctx.grid
-    cl = cell_levels(load_levels(ctx), grid)
+    levels = load_levels(ctx)
+    if levels is None:
+        levels = gpd.GeoDataFrame({"level": []}, geometry=[], crs=WGS84)
+    cl = cell_levels(levels, grid)
     ok = cl["coverage"] >= MIN_COVERAGE
     raw = cl["mean_level"].where(ok).round(2)
     level = cl["centroid_level"].where(ok)
