@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cell report (web/public/data/cells/<h3_res6>.json maps h3 -> Cell)",
+  "type": "object",
+  "required": ["h3", "topics"],
+  "properties": {
+    "h3": {"type": "string"},
+    "colonia": {"type": ["string", "null"]},
+    "cp": {"type": ["string", "null"]},
+    "alcaldia": {"type": ["string", "null"]},
+    "updated_at": {"type": "string"},
+    "topics": {
+      "type": "object",
+      "propertyNames": {"enum": ["agua", "inundacion", "granizo", "calor", "sismo", "vial", "ruido", "servicios", "patrimonio"]},
+      "additionalProperties": {
+        "type": "object",
+        "required": ["score", "raw", "label", "extra"],
+        "properties": {
+          "score": {"type": ["integer", "null"], "minimum": 0, "maximum": 100},
+          "raw": {"type": ["number", "null"]},
+          "label": {"type": ["string", "null"]},
+          "extra": {"type": "object"}
+        }
+      }
+    }
+  }
+}

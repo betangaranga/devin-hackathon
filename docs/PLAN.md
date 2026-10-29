@@ -82,9 +82,9 @@ Definición de terminado para cada tema `Dx`: el módulo lee `data/raw/` (o el f
 
 Estrategia, en orden:
 
-1. **Mirror una sola vez y todos leen del mirror.** D0 escribe `pipeline/fetch` (cliente CKAN genérico guiado por los manifiestos). Se corre una vez desde una red que sí llegue al portal, y los archivos crudos se suben como assets de un GitHub Release (`data-raw-YYYYMMDD`). Ahí van los SHP/GeoJSON/CSV con checksum. Los agentes descargan del Release, que sí es alcanzable.
+1. **Mirror una sola vez y todos leen del mirror.** `python3 -m pipeline.fetch` (solo stdlib, cliente CKAN guiado por `data/manifest/*.yaml`) ya está listo. Se corre una vez desde una red que sí llegue al portal, y los archivos crudos se suben como assets de un GitHub Release (`data-raw-YYYYMMDD`). Ahí van los SHP/GeoJSON/CSV con checksum. Los agentes descargan del Release, que sí es alcanzable.
 2. **Dónde se corre el fetch** (de menor a mayor esfuerzo):
-   - a. **GitHub Actions** (`fetch-data.yml`, `workflow_dispatch`). Este PR agrega `data-probe.yml`, que solo prueba si los runners de GitHub llegan al portal. Si llegan, el mirror queda automatizado y se puede programar semanalmente.
+   - a. ~~GitHub Actions~~: **descartado**. El probe (`data-probe.yml`) también da timeout desde los runners (Azure, centralus). El portal parece bloquear todo lo que no sea de México.
    - b. **Una máquina en México** (por ejemplo, la tuya conectada a la sesión): se corre `python -m pipeline.fetch` y se sube el Release.
    - c. **Proxy o runner en México** si se necesita refresco automático y (a) falla.
 3. **Fallbacks por dataset:** INEGI directo para el Marco Geoestadístico y el Censo AGEB (alcanzable), copias en Internet Archive de recursos CKAN (intermitente) y repos públicos en GitHub con copias de algunos datasets (no oficiales; solo para desarrollo).

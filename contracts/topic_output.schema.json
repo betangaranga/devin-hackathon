@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Topic output row (data/processed/<topic>.parquet)",
+  "description": "One row per H3 res-9 cell. Written by pipeline.run; `extra` is stored as a JSON string in parquet.",
+  "type": "object",
+  "required": ["h3", "metric_raw", "metric_label", "score", "extra"],
+  "properties": {
+    "h3": {"type": "string", "pattern": "^89[0-9a-f]{13}$"},
+    "metric_raw": {"type": ["number", "null"], "description": "Main metric in the topic unit (TopicSpec.unit)."},
+    "metric_label": {"type": ["string", "null"], "description": "Human label in Spanish, e.g. '84 incidentes', 'Peligro alto'."},
+    "score": {"type": ["integer", "null"], "minimum": 0, "maximum": 100, "description": "Percentile vs. CDMX cells, higher = better. Null if not scored or no data."},
+    "extra": {"type": "object", "description": "Topic-specific detail for the UI. Keys per topic are listed in contracts/topics.md."}
+  }
+}
