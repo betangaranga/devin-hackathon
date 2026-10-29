@@ -4,7 +4,7 @@ import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import { PMTiles, Protocol } from 'pmtiles'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { USE_FIXTURES } from '../data'
+import { getCellsAround, USE_FIXTURES } from '../data'
 import { TOPIC_BY_KEY } from '../topics'
 import type { Address, Cell, TopicKey } from '../types'
 import { iconSvg, KIND_LABEL } from './icons'
@@ -17,6 +17,7 @@ import {
   pointCollection,
   RADIUS_M,
   synthHexScores,
+  HEX_RING,
   synthPatrimonioOutline,
   topicPoints,
   type FeatureCollection,
@@ -235,7 +236,17 @@ export function CityMap({ address, cell, topic, className }: CityMapProps) {
       const pmLayer = usePm && pmKey ? ensurePmtilesLayer(map, pmKey, pmKey === 'patrimonio' ? 'line' : 'fill') : undefined
       hidePmtilesLayers(map, pmLayer)
       if (pmLayer) map.setLayoutProperty(pmLayer, 'visibility', 'visible')
-      setData(map, 'hex', usePm && pmKey !== 'patrimonio' ? EMPTY : synthHex())
+      if (USE_FIXTURES || !isCellTopic(topic)) setData(map, 'hex', usePm && pmKey !== 'patrimonio' ? EMPTY : synthHex())
+      else if (!usePm)
+        getCellsAround(address.h3, HEX_RING).then((cells) => {
+          if (cancelled || !mapRef.current) return
+          const scores: Record<string, number> = {}
+          for (const [h, c] of Object.entries(cells)) {
+            const sc = c.topics[topic]?.score
+            if (sc != null) scores[h] = sc
+          }
+          setData(map, 'hex', hexCollection(scores))
+        })
       setData(map, 'patrimonio', usePm && pmKey === 'patrimonio' ? EMPTY : (synthPat() as FeatureCollection))
       const strong = topic === 'patrimonio'
       map.setPaintProperty('patrimonio-line', 'line-opacity', strong ? 0.9 : 0.45)

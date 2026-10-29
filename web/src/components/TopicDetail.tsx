@@ -164,25 +164,18 @@ function Body({ meta, value, cell }: { meta: TopicMeta; value: TopicValue; cell:
       )
     }
     case 'ruido': {
-      const day = num(value.raw)
-      const night = num(x.db_night)
-      const rows = [
-        { l: 'Día', v: day, ref: 53 },
-        { l: 'Noche', v: night, ref: 45 },
-      ]
+      const level = num(value.raw)
+      const labels = ['Pocas', 'Moderadas', 'Muchas']
       return (
         <div className="flex flex-col gap-1.5">
-          {rows.map((r) => (
-            <div key={r.l} className="flex items-center gap-2 text-[11px]">
-              <span className="w-10">{r.l}</span>
-              <span className="relative h-2 flex-1 rounded-full bg-black/10">
-                {r.v != null && <span className="absolute inset-y-0 left-0 rounded-full" style={{ width: `${Math.min(r.v / 90, 1) * 100}%`, background: color }} />}
-                <span className="absolute -top-1 h-4 border-l border-dashed border-ink" style={{ left: `${(r.ref / 90) * 100}%` }} />
+          <div className="flex gap-1">
+            {labels.map((l, i) => (
+              <span key={l} className="flex-1 rounded-full py-1 text-center text-[10px]" style={level != null && Math.round(level) === i ? { background: color, color: 'white' } : { background: 'rgba(0,0,0,0.06)' }}>
+                {l}
               </span>
-              <span className="w-12 text-right">{r.v == null ? '–' : `${r.v} dB`}</span>
-            </div>
-          ))}
-          <span className="text-[10px] text-neutral-400">Línea punteada = guía OMS para tráfico (53 dB día, 45 dB noche)</span>
+            ))}
+          </div>
+          <span className="text-[10px] text-neutral-400">Denuncias de ruido ante la PAOT (2020) a 300 m. No es ruido medido en dB.</span>
         </div>
       )
     }

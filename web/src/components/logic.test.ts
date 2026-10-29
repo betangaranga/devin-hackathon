@@ -43,7 +43,7 @@ describe('helpers', () => {
     expect(wedge(50, 10, 40, 0, 90)).toMatch(/^M.*Z$/)
   })
   it('verdict picks best and worst topics', () => {
-    expect(verdict(a)).toEqual({ best: ['servicios a pie', 'abasto de agua'], worst: ['sismo y reconstrucción', 'inundación'] })
+    expect(verdict(a)).toEqual({ best: ['servicios a pie', 'abasto de agua'], worst: ['sismo y reconstrucción', 'lluvia intensa'] })
     expect(verdict({ h3: 'x', topics: {} })).toEqual({ best: [], worst: [] })
   })
   it('month labels end at updated_at month, or November by default', () => {

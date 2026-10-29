@@ -186,8 +186,8 @@ export function calloutStats(cell: Cell | null, topic: TopicKey): Stat[] {
       return [main('incidentes / año'), { v: r != null ? `${r.toFixed(1)}×` : '–', l: 'vs. promedio CDMX' }, pct]
     }
     case 'ruido': {
-      const n = num(e.db_night)
-      return [main('dB de día'), { v: n != null ? `${fmt(n)}` : '–', l: 'dB de noche' }, pct]
+      const lvl = typeof e.level_label === 'string' ? e.level_label : null
+      return [main('nivel de denuncias (0–2)'), { v: lvl ?? '–', l: 'en tu cuadra' }, pct]
     }
     case 'servicios': {
       const mins = list(v, 'nearest').map((s) => num(s.minutes)).filter((x): x is number => x != null)

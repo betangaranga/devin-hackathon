@@ -114,7 +114,7 @@ describe('calloutStats', () => {
       { v: '41', l: 'percentil CDMX' },
     ])
     expect(calloutStats(cell, 'agua')[1]).toEqual({ v: 'Abr', l: 'mes más crítico' })
-    expect(calloutStats(cell, 'ruido')[1]).toEqual({ v: '63', l: 'dB de noche' })
+    expect(calloutStats(cell, 'ruido')[1]).toEqual({ v: '–', l: 'en tu cuadra' })
     expect(calloutStats(cell, 'servicios').slice(0, 2)).toEqual([
       { v: '6/6', l: 'servicios a < 15 min' },
       { v: '9′', l: 'el más lejano' },
