@@ -1,0 +1,25 @@
+name: data-probe
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/data-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if GitHub runners can reach the CDMX CKAN API
+        run: |
+          set +e
+          for url in \
+            "https://datos.cdmx.gob.mx/api/3/action/status_show" \
+            "https://datos.cdmx.gob.mx/api/3/action/package_show?id=incidentes-viales-c5"; do
+            code=$(curl -s -o /tmp/out.json -m 30 -w "%{http_code}" "$url")
+            echo "$url -> HTTP $code"
+            head -c 400 /tmp/out.json; echo
+          done
