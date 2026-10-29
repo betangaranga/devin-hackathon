@@ -1,37 +1,46 @@
-# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+# Verified against the data-raw-2026-10-29 mirror (CKAN metadata_modified 2026-09-01).
 owner: D3
 portal: https://datos.cdmx.gob.mx
 datasets:
 - id: atlas-de-riesgo-precipitacion
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
+  - shp
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: estática (SPCGIR 2019; SHP de may-2021, recursos re-publicados ago-2026)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: >-
+    Se usa el CSV (geometría GeoJSON en geo_shape, nombres completos); el SHP trunca columnas y rompe acentos.
+    2,454 AGEB (urbanos y rurales, 16 alcaldías, ~1,493 km², cubre toda la CDMX), cada AGEB aparece 2 veces en el CSV
+    (se deduplica por id). Peligro por precipitación máxima (mm, periodo de retorno 5 años, estaciones CONAGUA), 5 clases:
+    Muy bajo 41–54, Bajo 54–60, Medio 60–64, Alto 64–70, Muy alto 70–108 mm (columna int2 = 1–5). Mapeo al contrato 1–4:
+    Muy bajo=1, Bajo=2, Medio=3, Alto y Muy alto=4 (Muy alto es 1 solo AGEB en Milpa Alta). Ojo: mide lluvia, no
+    encharcamientos; el oriente (Tláhuac, Iztapalapa), que se inunda más, sale con peligro bajo y el poniente con alto.
 - id: atlas-de-riesgo-granizo
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
+  - shp
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: estática (SPCGIR 2019; SHP de may-2021, recursos re-publicados ago-2026)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: >-
+    Misma estructura y AGEB que precipitación (CSV con filas duplicadas). Días con granizo al año, periodo de retorno 5 años,
+    5 clases: Muy bajo 0–3, Bajo 4, Medio 5, Alto 6, Muy alto >6 días. Mapeo 1–4 igual que precipitación (Alto y Muy alto=4);
+    la clase nativa 1–5 se guarda en extra.atlas_level y se usa para el puntaje. Muy alto cubre ~20% de los AGEB
+    (todo Benito Juárez y Miguel Hidalgo).
 - id: zonas-de-distribucion-de-temperatura-media-anual-en-la-ciudad-de-mexico
   formats:
   - geojson
   - shp
-  - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: estática (INEGI Carta de Temperaturas Medias Anuales 1:1,000,000 serie I; SHP de 2020)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: >-
+    11 polígonos, cubren toda la CDMX (~1,493 km²). Campo RANGO en bandas de 2 °C (6-8 ... 16-18); metric_raw = punto medio.
+    Escala 1:1M: bordes muy gruesos, no distingue islas de calor dentro de la zona urbana (todo el centro sale 16–18 °C).
