@@ -1,81 +1,75 @@
-# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+# Verified against GitHub Release data-raw-2026-10-29 (CKAN metadata_modified 2026-09-01).
 owner: D7
 portal: https://datos.cdmx.gob.mx
 datasets:
 - id: centros-de-salud
   formats:
-  - geojson
   - shp
   - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: irregular
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 'SHP zip (carpeta "Centros de Salud/", con __MACOSX). 212 centros SEDESA T-I/II/III; se excluyen 17 "FUERA DE OPERACIÓN". El CSV es solo el diccionario de datos. Columnas LONGITUD/LATITUD tienen errores (p. ej. Ermita Zaragoza); se usa la geometría. Capa de 2022.'
 - id: hospitales-y-centros-de-salud
   formats:
-  - geojson
   - shp
   - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: irregular
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 'Solo 27 hospitales de la red SEDESA (generales, pediátricos, materno infantiles); sin IMSS/ISSSTE ni privados. SHP de 2021.'
 - id: escuelas-publicas
   formats:
-  - geojson
   - shp
   - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: irregular
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 'SHP (2,242 puntos; el archivo interno se llama escuelas_privadas.shp pero son públicas). El CSV tiene 2,383 filas, 141 sin coordenadas. Mezcla preescolar, primaria, secundaria y algunos servicios (CAPEP, USAER). Capa de 2022.'
 - id: mercados-publicos
   formats:
   - geojson
   - shp
   - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: irregular
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: '329 mercados públicos (tradicionales y especializados), GeoJSON en EPSG:4326; Coord_X/Y en UTM 14N. Capa de 2021.'
 - id: mercados-sobre-ruedas
   formats:
   - geojson
   - shp
   - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: irregular
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 'Solo 51 puntos (programa Mercados sobre Ruedas, un día por semana); no incluye tianguis. El .shp viene suelto sin .dbf/.shx; usar el GeoJSON.'
 - id: lineas-y-estaciones-del-metro
   formats:
-  - geojson
   - shp
-  - csv
-  crs: null
+  - xlsx
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
-- id: puntos-de-acceso-wifi-en-la-ciudad-de-mexico
+  update_frequency: irregular
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 'Zip con STC_Metro_estaciones_utm14n.shp (195 estaciones, una por línea en transbordos) y STC_Metro_lineas_utm14n.shp; pese al nombre, el .prj de estaciones es EPSG:4326. Solo Metro: falta Metrobús, Tren Ligero, Cablebús y RTP. Capa de 2021.'
+- id: puntos-de-acceso-wifi-en-la-cdmx
   formats:
-  - geojson
-  - shp
-  - csv
+  - xlsx
   crs: null
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: irregular
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 'Id corregido (puntos-de-acceso-wifi-en-la-ciudad-de-mexico da 404). Un solo recurso XLSX (2025-wifi_gratuito_en_CDMX, ~1.3 MB, 35,350 puntos) que NO está en el mirror data-raw-2026-10-29 (solo package.json). servicios.py lo lee si aparece (CSV/GeoJSON/XLSX con latitud/longitud; XLSX requiere openpyxl) como tipo opcional "wifi" que no entra al puntaje.'
