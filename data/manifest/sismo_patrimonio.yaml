@@ -1,59 +1,58 @@
-# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+# Verified against the data-raw-2026-10-29 mirror (CKAN metadata_modified 2026-09-01).
 owner: D4
 portal: https://datos.cdmx.gob.mx
 datasets:
 - id: inmuebles-en-atencion-como-parte-del-plan-integral-para-la-reconstruccion
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
+  - xlsx
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: no_aplica
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 'Solo CSV (columnas latitud/longitud, UTF-8 con BOM), sin geometría. 11,527 viviendas del Plan Integral (CRCM/INVI) dañadas el 19-S-2017; estatus CONCLUIDA 10,271 / EN OBRA 1,089 / POR INICIAR 167. Sin fecha por registro. 4 coordenadas perdieron el punto decimal (p. ej. -9910252997) y se reparan. Muchas viviendas comparten coordenada (geocodificación por manzana; hasta 108 en un punto). Concentrado en Iztapalapa, Tláhuac y Xochimilco.'
 - id: reconstruccion-multifamiliares-cdmx
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
+  - shp
+  - xlsx
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: no_aplica
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 'Archivo histórico. 403 edificios multifamiliares (CSV latitud/longitud); 35 sin coordenadas. Columnas de fechas vacías; estatus_general (POR REVISAR, EN PROCESO DE OBRA, ...). Se descartan los que están a < 15 m de un inmueble del Plan Integral (114): quedan 254.'
 - id: reconstruccion-viviendas-unifamiliares
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
+  - shp
+  - xlsx
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: no_aplica
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 'Archivo histórico. 11,884 viviendas (CSV latitud/longitud); 497 sin coordenadas. inicio/final_construccion (dd/mm/aaaa) solo en una parte, 2019. estatus_obra (EN REVISIÓN, POR REVISAR, REHABILITACIÓN, ...). Se descartan las que están a < 15 m de un inmueble del Plan Integral (2,452): quedan 8,935.'
 - id: areas-de-conservacion-patrimonial
   formats:
   - geojson
   - shp
-  - csv
-  crs: null
+  - xlsx
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: no_aplica
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: '176 polígonos (CRS84), campos id_seduvi, nombre, alcaldia, M2; ~103 km². Una celda está dentro si su centroide cae en un polígono (842 de 12,619 celdas). Sin fecha de vigencia en los datos.'
 - id: inmuebles-catalogados
   formats:
+  - csv
   - geojson
   - shp
-  - csv
-  crs: null
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: no_aplica
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: '167,371 predios (CSV con X/Y en grados). SP_NOMBRE combina ACP/CC/INBA/INAH/SEDUVI: solo se cuentan como catalogados los que tienen INBA, INAH o SEDUVI (~15.5k); "ACP" (predio dentro del área) y "CC" (colindante) se excluyen. Sin fecha.'
