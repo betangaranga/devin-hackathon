@@ -1,4 +1,4 @@
-# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+# Verified against the data-raw-2026-10-29 mirror (CKAN metadata_modified 2026-09-01).
 owner: D6
 portal: https://datos.cdmx.gob.mx
 datasets:
@@ -7,9 +7,16 @@ datasets:
   - geojson
   - shp
   - csv
-  crs: null
+  crs: EPSG:4326 (GeoJSON, CRS84); the SHP kernel_ruido is EPSG:32614 (UTM 14N)
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: no_aplica (single 2020 release; SHP files dated 2021-02-17)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: >-
+    Not dB measurements. 41 polygons of a kernel-density surface of PAOT noise complaints
+    (author CentroGeo/PAOT, version 2020), classified as GRIDCODE 0 (< 0.119), 1 (0.119-1.16)
+    and 2 (1.16-30.47); `Valores` is the class range as text, null for class 0; density units
+    are not documented. The CSV is only the data dictionary. Coverage ~1,165 km2, south limit
+    ~19.22 N: most of Milpa Alta, south Tlalpan, Xochimilco/Tlahuac rural areas and the
+    western Cuajimalpa edge are not covered (null score). Complaints reflect reporting, not
+    measured noise: dense, central, higher-income areas (Benito Juarez, Cuauhtemoc) report more.
