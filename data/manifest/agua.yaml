@@ -1,37 +1,34 @@
-# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+# Verified against the data-raw-2026-10-29 mirror (CKAN metadata_modified 2026-09-01).
 owner: D2
 portal: https://datos.cdmx.gob.mx
 datasets:
 - id: reportes-de-agua
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
-  date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  crs: EPSG:4326 (columnas latitud/longitud)
+  date_column: fecha_reporte
+  update_frequency: mensual según CKAN; el mirror termina el 2024-02-01 (último mes completo 2024-01)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: Dos CSV UTF-8. Se usa "Reportes de incidentes de agua (2022-2024)" (313,756 filas; 173,404 "Falta de agua", 166,833 tras quitar id_reporte duplicados; 84 con coordenadas fuera de México). El histórico 2018-2021 (otro esquema, tipo_de_falla/fecha) no se usa. Ventana de 24 meses 2022-02..2024-01; abril 2023 casi vacío (22 reportes en total, hueco del sistema). Son reportes ciudadanos (call center 80%+, redes sociales), así que miden la propensión a reportar además de la falta de agua; Iztapalapa y Milpa Alta reportan muy poco en todos los años (tandeo crónico atendido con pipas que no se reporta a SACMEX) y salen con buen puntaje.
 - id: consumo-agua
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
-  date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  - xlsx
+  crs: EPSG:4326 (columnas latitud/longitud, punto por manzana e índice de desarrollo)
+  date_column: fecha_referencia
+  update_frequency: única (1er semestre 2019, bimestres 1-3)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 71,102 filas (manzana x bimestre x índice de desarrollo). Solo contexto (no puntúa) - consumo doméstico facturado promedio por toma (m³/bimestre) por colonia = suma(consumo_total_dom) / suma(consumo_total_dom / consumo_prom_dom). Incluye consumo promedio estimado (sin medidor) según el Código Fiscal 2019; valores extremos (hasta 7,796 m³) se diluyen en el promedio ponderado. ~85% de las celdas con dato tienen consumo.
 - id: cobertura-de-infraestructura-de-agua-potable-m-hab
   formats:
   - geojson
   - shp
   - csv
-  crs: null
+  crs: EPSG:4326 (GeoJSON CRS84)
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: única (población 2010)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: 1,815 polígonos de colonias INE con pob_2010, LongInf_m (red secundaria de agua y drenaje, m), m_x_hab y quintil. Solo contexto (no puntúa) - red_m_hab = LongInf_m / pob_2010 por celda (centroide dentro); city_red_m_hab ponderado por población. Colonias con pob_2010 = 0 quedan nulas. Población de 2010, así que zonas que crecieron desde entonces aparecen con más metros por habitante de los reales.
