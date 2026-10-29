@@ -1,37 +1,42 @@
-# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+# Verified against the GitHub Release data-raw-2026-10-29 mirror (2026-10-29).
 owner: D5
 portal: https://datos.cdmx.gob.mx
 datasets:
 - id: incidentes-viales-c5
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
-  date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  crs: EPSG:4326
+  date_column: fecha_creacion
+  update_frequency: mensual (según CKAN); el espejo termina en 2024-02-29
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: >-
+    4 CSV UTF-8 (2014-2015, 2016-2018, 2019-2021, 2022-2024), mismas 17 columnas, latitud/longitud en grados.
+    Se usan solo registros con codigo_cierre = A (afirmativo, unidad confirmó en sitio); N/I/F/D se descartan
+    (en 2022-2023 ~37% A, ~42% D duplicados, ~20% F falsos). Son llamadas/reportes atendidos, no hechos peritados.
+    Ventana: últimos 3 años completos = 2021-2023. Gravedad aproximada desde tipo_incidente_c4/incidente_c4
+    (Cadáver = fallecido; Lesionado, "con lesionados", Atropellado, prensados = lesionados); no hay conteo de víctimas.
 - id: hechos-de-transito-reportados-por-ssc-base-comparativa
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
-  date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  crs: EPSG:4326
+  date_column: fecha_evento
+  update_frequency: no se actualiza (serie comparativa)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: >-
+    CSV con 30,758 hechos 2018-2019 (coordenada_x = lon, coordenada_y = lat), con víctimas (total_occisos,
+    total_lesionados) y cruce (punto_1, punto_2). Fuera de la ventana 2021-2023, así que no puntúa;
+    solo se usa para nombrar hotspots (cruce SSC a < 75 m).
 - id: intersecciones-seguras
   formats:
-  - geojson
-  - shp
   - csv
-  crs: null
+  - shp
+  crs: EPSG:4326
   date_column: null
-  update_frequency: null
-  license: null
-  verified: false
-  notes: ''
+  update_frequency: sin actualización (SHP de 2021)
+  license: CC-BY-4.0-ESP
+  verified: true
+  notes: >-
+    117 cruces intervenidos por SEMOVI (interseccion, latitud, longitud). Solo se usa para nombrar hotspots
+    (prioridad sobre SSC si está a < 75 m); no indica cuándo se intervino cada cruce.
