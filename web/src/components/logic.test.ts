@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import cells from '../../../fixtures/cells.json'
 import type { Cell } from '../types'
-import { cardSummary, matrixSize, maxWalk, monthLabels, petals, seriesSummary, verdict, walkList, wedge } from './logic'
+import { cardSummary, matrixSize, maxWalk, monthLabels, seriesLabels, petals, seriesSummary, verdict, walkList, wedge } from './logic'
 
 const [a, b, c] = cells as Cell[]
 
@@ -49,6 +49,8 @@ describe('helpers', () => {
   it('month labels end at updated_at month, or November by default', () => {
     expect(monthLabels('fixture')).toEqual(['Dic', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov'])
     expect(monthLabels('2026-03-15').at(-1)).toBe('Mar')
+    expect(seriesLabels(['2023-02', '2023-03', '2023-04'], '2026-10-29', 3)).toEqual(['Feb', 'Mar', 'Abr'])
+    expect(seriesLabels(undefined, '2026-03-15').at(-1)).toBe('Mar')
     expect(monthLabels('2026-03-15')[0]).toBe('Abr')
   })
   it('series summary finds the peak month and ratio vs city', () => {

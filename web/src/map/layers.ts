@@ -1,4 +1,5 @@
 import { cellsToMultiPolygon, cellToBoundary, gridDisk, gridDistance } from 'h3-js'
+import { seriesLabels } from '../components/logic'
 import type { Cell, TopicKey, TopicValue } from '../types'
 
 // Pure helpers for CityMap (no maplibre/DOM imports so they run under vitest in node).
@@ -144,7 +145,6 @@ export const hotspotRadius = (n: number | undefined) => Math.round(8 + Math.sqrt
 
 export interface Stat { v: string; l: string }
 
-const MONTHS = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
 const nums = (x: unknown): number[] => (Array.isArray(x) ? x.filter((n): n is number => typeof n === 'number') : [])
 const sum = (a: number[]) => a.reduce((s, n) => s + n, 0)
 const fmt = (n: number, d = 1) => (Number.isInteger(n) ? String(n) : n.toFixed(d))
@@ -166,7 +166,7 @@ export function calloutStats(cell: Cell | null, topic: TopicKey): Stat[] {
         m.length && sum(city) > 0
           ? { v: `${(sum(m) / sum(city)).toFixed(1)}×`, l: 'vs. promedio CDMX' }
           : { v: '–', l: 'vs. promedio CDMX' }
-      const peak = m.length ? MONTHS[m.indexOf(Math.max(...m))] : '–'
+      const peak = m.length ? seriesLabels(e.months, cell?.updated_at, m.length)[m.indexOf(Math.max(...m))] : '–'
       return [main('reportes / 1k hab.'), m.length ? { v: peak, l: 'mes más crítico' } : extra, pct]
     }
     case 'inundacion':

@@ -25,6 +25,13 @@ export function monthLabels(updatedAt?: string | null, n = 12): string[] {
   return Array.from({ length: n }, (_, i) => MONTH_NAMES[(((last - n + 1 + i) % 12) + 12) % 12])
 }
 
+/** Labels from `extra.months` ("YYYY-MM"), falling back to a series ending at `updatedAt`. */
+export function seriesLabels(months: unknown, updatedAt?: string | null, n = 12): string[] {
+  if (Array.isArray(months) && months.length === n && months.every((m) => typeof m === 'string' && /^\d{4}-\d{2}/.test(m)))
+    return (months as string[]).map((m) => MONTH_NAMES[Number(m.slice(5, 7)) - 1])
+  return monthLabels(updatedAt, n)
+}
+
 export const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0)
 
 export interface ServiceItem {
@@ -61,7 +68,7 @@ export function cardSummary(key: TopicKey, v: TopicValue | undefined): { big: st
     case 'vial':
       return { big: fmt(raw!, 0), unit: 'incidentes / año' }
     case 'ruido':
-      return { big: fmt(raw!, 0), unit: 'dB de día' }
+      return { big: `${fmt(raw!, 0)}/2`, unit: 'nivel de denuncias' }
     case 'calor':
       return { big: `${fmt(raw!)}°`, unit: 'media anual' }
     case 'servicios': {

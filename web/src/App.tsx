@@ -12,7 +12,7 @@ import { getCell, SAMPLE_ADDRESSES, USE_FIXTURES } from './data'
 import { CityMap } from './map'
 import { PROFILE_KEYS, PROFILES, profileScore, type ProfileKey } from './profiles'
 import { AddressSearch } from './search'
-import { whatsappLink } from './share'
+import { useReportUrlState, whatsappLink } from './share'
 import { statusText } from './status'
 import { SCORED_TOPICS, TOPIC_BY_KEY } from './topics'
 import type { Address, Cell, TopicKey } from './types'
@@ -20,11 +20,15 @@ import type { Address, Cell, TopicKey } from './types'
 type View = 'reporte' | 'comparar'
 
 export default function App() {
-  const [addr, setAddr] = useState<Address>(SAMPLE_ADDRESSES[0])
-  const [profile, setProfile] = useState<ProfileKey>('equilibrado')
-  const [topic, setTopic] = useState<TopicKey>('servicios')
+  const [report, updateReport] = useReportUrlState(
+    { address: SAMPLE_ADDRESSES[0], profile: 'equilibrado', topic: 'servicios', compare: SAMPLE_ADDRESSES.slice(0, MAX_COMPARE) },
+    SAMPLE_ADDRESSES,
+  )
+  const { address: addr, profile, topic, compare } = report
+  const setAddr = (address: Address) => updateReport({ address })
+  const setProfile = (p: ProfileKey) => updateReport({ profile: p })
+  const setTopic = (t: TopicKey) => updateReport({ topic: t })
   const [view, setView] = useState<View>('reporte')
-  const [compare, setCompare] = useState<Address[]>(SAMPLE_ADDRESSES.slice(0, MAX_COMPARE))
   const [cells, setCells] = useState<Record<string, Cell | null>>({})
 
   const wanted = useMemo(() => [...new Set([addr.h3, ...compare.map((a) => a.h3)])], [addr.h3, compare])
@@ -51,8 +55,10 @@ export default function App() {
     setAddr(a)
     setView('reporte')
   }
-  const addCompare = (a: Address) => setCompare((xs) => (xs.some((x) => x.id === a.id) || xs.length >= MAX_COMPARE ? xs : [...xs, a]))
-  const removeCompare = (a: Address) => setCompare((xs) => xs.filter((x) => x.id !== a.id))
+  const addCompare = (a: Address) => {
+    if (!compare.some((x) => x.id === a.id) && compare.length < MAX_COMPARE) updateReport({ compare: [...compare, a] })
+  }
+  const removeCompare = (a: Address) => updateReport({ compare: compare.filter((x) => x.id !== a.id) })
 
   return (
     <div className="flex min-h-full flex-col lg:h-full">

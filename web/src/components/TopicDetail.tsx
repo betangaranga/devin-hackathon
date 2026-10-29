@@ -1,7 +1,7 @@
 import { statusColor } from '../status'
 import type { Cell, TopicMeta, TopicValue } from '../types'
 import { Icon } from './icons'
-import { HAZARD_LEVELS, monthLabels, num, numArray, objArray, seriesSummary, SERVICE_LABEL, walkList } from './logic'
+import { HAZARD_LEVELS, seriesLabels, num, numArray, objArray, seriesSummary, SERVICE_LABEL, walkList } from './logic'
 
 const SEASON: Record<string, string> = { inundacion: 'Temporada: jun–sep', granizo: 'Temporada: may–ago' }
 
@@ -46,7 +46,7 @@ function MonthlyBars({ series, reference, labels, color, refLabel }: { series: n
 function Body({ meta, value, cell }: { meta: TopicMeta; value: TopicValue; cell: Cell }) {
   const x = value.extra ?? {}
   const color = statusColor(value.score)
-  const labels = monthLabels(cell.updated_at)
+  const labels = seriesLabels(x.months, cell.updated_at)
   switch (meta.key) {
     case 'agua': {
       const m = numArray(x.monthly)
