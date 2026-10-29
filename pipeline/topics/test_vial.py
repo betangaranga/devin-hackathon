@@ -69,3 +69,9 @@ def test_compute_contract(ctx):
         row["score"] = None if pd.isna(row["score"]) else int(row["score"])
         row["metric_raw"] = float(row["metric_raw"])
         validate(row, schema)
+
+
+def test_no_raw_data_returns_nulls(tmp_path):
+    grid = load_grid(use_fixtures=True)
+    out = finalize(vial.TOPIC, vial.compute(Context(grid=grid, raw_dir=tmp_path)))
+    assert len(out) == len(grid) and out.metric_raw.isna().all() and out.score.isna().all()

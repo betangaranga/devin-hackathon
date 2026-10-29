@@ -129,8 +129,17 @@ def inhabited_percentile(values: np.ndarray, inhabited: np.ndarray) -> pd.Series
     return pd.Series(np.round((1 - share) * 100), dtype="Int64")
 
 
+def _empty(grid) -> pd.DataFrame:
+    """No raw data (e.g. CI on fixtures): one row per cell with null metric and score."""
+    nan = pd.Series(np.nan, index=grid.index)
+    return pd.DataFrame({"h3": grid["h3"], "metric_raw": nan, "metric_label": pd.Series(None, index=grid.index, dtype=object),
+                         "score": pd.Series(pd.NA, index=grid.index, dtype="Int64"), "extra": [{} for _ in range(len(grid))]})
+
+
 def compute(ctx: Context) -> pd.DataFrame:
     grid = ctx.grid.reset_index(drop=True)
+    if not ctx.dataset_files(C5, ".csv"):
+        return _empty(grid)
     all_inc = load_c5(ctx)
     years = full_years(all_inc)
     inc = all_inc[all_inc.year.isin(years)].reset_index(drop=True)
