@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Devin artifact kit" />
+    <title>Artifact</title>
+    <script>
+      // A network that blocks the kit's host (or hands back a block page for it) leaves the page blank; say so instead. Styled like the
+      // ds error alert card (ChatAlertCard variant="error", no bar), values hardcoded: the kit CSS is what failed.
+      function artifactKitFailed() {
+        function show() {
+          if (document.getElementById("artifact-kit-notice")) return;
+          document.documentElement.style.colorScheme = "light";
+          var notice = document.createElement("div");
+          notice.id = "artifact-kit-notice";
+          notice.setAttribute("role", "alert");
+          notice.style.cssText =
+            "box-sizing:border-box;display:flex;align-items:flex-start;gap:6px;max-width:960px;margin:0 auto;padding:32px 24px 0;" +
+            "font:13px/18px Inter,ui-sans-serif,system-ui,sans-serif;letter-spacing:-0.005em;color:rgb(25 25 25)";
+          var ns = "http://www.w3.org/2000/svg";
+          var icon = document.createElementNS(ns, "svg");
+          icon.setAttribute("viewBox", "0 0 24 24");
+          icon.setAttribute("fill", "rgb(245 59 58)");
+          icon.setAttribute("aria-hidden", "true");
+          icon.style.cssText = "width:14px;height:14px;flex-shrink:0;margin-top:2px";
+          var path = document.createElementNS(ns, "path");
+          path.setAttribute("fill-rule", "evenodd");
+          path.setAttribute("clip-rule", "evenodd");
+          path.setAttribute(
+            "d",
+            "M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15ZM12 7C11.5858 7 11.25 7.33579 11.25 7.75V12.25C11.25 12.6642 11.5858 13 12 13C12.4142 13 12.75 12.6642 12.75 12.25V7.75C12.75 7.33579 12.4142 7 12 7Z"
+          );
+          icon.appendChild(path);
+          var text = document.createElement("span");
+          text.textContent = "This page could not load Devin's artifact kit.";
+          notice.appendChild(icon);
+          notice.appendChild(text);
+          document.body.prepend(notice);
+        }
+        if (document.body) show();
+        else document.addEventListener("DOMContentLoaded", show);
+      }
+    </script>
+    <link rel="stylesheet" href="https://static.devin.ai/artifact-kit/3ca8cd77f017c7a2/ds-kit.css" onerror="artifactKitFailed()" />
+    <style>
+.absolute {
+    position: absolute
+}
+.relative {
+    position: relative
+}
+.inset-0 {
+    inset: 0px
+}
+.inset-x-0 {
+    left: 0px;
+    right: 0px
+}
+.-top-5 {
+    top: -1.25rem
+}
+.bottom-3 {
+    bottom: 0.75rem
+}
+.left-0 {
+    left: 0px
+}
+.left-1\/2 {
+    left: 50%
+}
+.left-3 {
+    left: 0.75rem
+}
+.right-3 {
+    right: 0.75rem
+}
+.top-1 {
+    top: 0.25rem
+}
+.top-1\/2 {
+    top: 50%
+}
+.top-2 {
+    top: 0.5rem
+}
+.top-3 {
+    top: 0.75rem
+}
+.top-5 {
+    top: 1.25rem
+}
+.top-\[-14px\] {
+    top: -14px
+}
+.top-\[32px\] {
+    top: 32px
+}
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto
+}
+.mt-1 {
+    margin-top: 0.25rem
+}
+.mt-2 {
+    margin-top: 0.5rem
+}
+.mt-5 {
+    margin-top: 1.25rem
+}
+.flex {
+    display: flex
+}
+.grid {
+    display: grid
+}
+.\!h-auto {
+    height: auto !important
+}
+.h-2 {
+    height: 0.5rem
+}
+.h-3 {
+    height: 0.75rem
+}
+.h-4 {
+    height: 1rem
+}
+.h-6 {
+    height: 1.5rem
+}
+.h-8 {
+    height: 2rem
+}
+.h-full {
+    height: 100%
+}
+.min-h-\[460px\] {
+    min-height: 460px
+}
+.w-2 {
+    width: 0.5rem
+}
+.w-3 {
+    width: 0.75rem
+}
+.w-4 {
+    width: 1rem
+}
+.w-8 {
+    width: 2rem
+}
+.w-full {
+    width: 100%
+}
+.min-w-\[88px\] {
+    min-width: 88px
+}
+.flex-1 {
+    flex: 1 1 0%
+}
+.-translate-x-1\/2 {
+    --tw-translate-x: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+.-translate-y-1\.5 {
+    --tw-translate-y: -0.375rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+.-translate-y-\[calc\(100\%\+28px\)\] {
+    --tw-translate-y: calc(calc(100% + 28px) * -1);
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+.rotate-45 {
+    --tw-rotate: 45deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+.transform {
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+.grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+.grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr))
+}
+.grid-cols-\[140px_1fr_1fr_1fr\] {
+    grid-template-columns: 140px 1fr 1fr 1fr
+}
+.flex-col {
+    flex-direction: column
+}
+.items-start {
+    align-items: flex-start
+}
+.items-center {
+    align-items: center
+}
+.items-stretch {
+    align-items: stretch
+}
+.\!justify-start {
+    justify-content: flex-start !important
+}
+.justify-center {
+    justify-content: center
+}
+.justify-between {
+    justify-content: space-between
+}
+.gap-0\.5 {
+    gap: 0.125rem
+}
+.gap-1 {
+    gap: 0.25rem
+}
+.gap-1\.5 {
+    gap: 0.375rem
+}
+.gap-2 {
+    gap: 0.5rem
+}
+.gap-3 {
+    gap: 0.75rem
+}
+.gap-4 {
+    gap: 1rem
+}
+.gap-6 {
+    gap: 1.5rem
+}
+.overflow-hidden {
+    overflow: hidden
+}
+.whitespace-nowrap {
+    white-space: nowrap
+}
+.\!rounded-2xl {
+    border-radius: 1rem !important
+}
+.rounded {
+    border-radius: 0.25rem
+}
+.rounded-2xl {
+    border-radius: 1rem
+}
+.rounded-full {
+    border-radius: 9999px
+}
+.rounded-md {
+    border-radius: calc(0.5rem - 2px)
+}
+.rounded-xl {
+    border-radius: 0.75rem
+}
+.border {
+    border-width: 1px
+}
+.border-2 {
+    border-width: 2px
+}
+.border-l {
+    border-left-width: 1px
+}
+.border-\[rgb\(var\(--bg-elevated\)\/0\.2\)\] {
+    border-color: rgb(var(--bg-elevated)/0.2)
+}
+.border-\[rgb\(var\(--text-primary\)\)\] {
+    border-color: rgb(var(--text-primary))
+}
+.border-primary {
+    border-color: rgb(var(--border-primary))
+}
+.bg-\[rgb\(var\(--bg-elevated\)\/0\.15\)\] {
+    background-color: rgb(var(--bg-elevated)/0.15)
+}
+.bg-\[rgb\(var\(--text-primary\)\)\] {
+    background-color: rgb(var(--text-primary))
+}
+.bg-\[rgb\(var\(--text-tertiary\)\/0\.15\)\] {
+    background-color: rgb(var(--text-tertiary)/0.15)
+}
+.bg-elevated {
+    background-color: rgb(var(--bg-elevated))
+}
+.bg-wash {
+    background-color: rgb(var(--bg-wash))
+}
+.fill-\[rgb\(var\(--bg-elevated\)\)\] {
+    fill: rgb(var(--bg-elevated))
+}
+.stroke-\[rgb\(var\(--bg-elevated\)\)\] {
+    stroke: rgb(var(--bg-elevated))
+}
+.\!p-0 {
+    padding: 0px !important
+}
+.p-1 {
+    padding: 0.25rem
+}
+.p-3 {
+    padding: 0.75rem
+}
+.px-1\.5 {
+    padding-left: 0.375rem;
+    padding-right: 0.375rem
+}
+.px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+}
+.px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem
+}
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem
+}
+.py-0\.5 {
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem
+}
+.py-1\.5 {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem
+}
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem
+}
+.pb-3 {
+    padding-bottom: 0.75rem
+}
+.pt-3 {
+    padding-top: 0.75rem
+}
+.text-left {
+    text-align: left
+}
+.text-\[10px\] {
+    font-size: 10px
+}
+.text-\[11px\] {
+    font-size: 11px
+}
+.text-\[13px\] {
+    font-size: 13px
+}
+.text-\[24px\] {
+    font-size: 24px
+}
+.text-\[34px\] {
+    font-size: 34px
+}
+.font-light {
+    font-weight: 300
+}
+.font-semibold {
+    font-weight: 600
+}
+.leading-none {
+    line-height: 1
+}
+.leading-tight {
+    line-height: 1.25
+}
+.text-\[rgb\(var\(--bg-elevated\)\)\] {
+    color: rgb(var(--bg-elevated))
+}
+.text-blue {
+    color: rgb(var(--text-blue))
+}
+.text-green {
+    color: rgb(var(--text-green))
+}
+.text-orange {
+    color: rgb(var(--text-orange))
+}
+.text-primary {
+    color: rgb(var(--text-primary))
+}
+.text-purple {
+    color: rgb(var(--text-purple))
+}
+.text-red {
+    color: rgb(var(--text-red))
+}
+.text-secondary {
+    color: rgb(var(--text-secondary))
+}
+.text-tertiary {
+    color: rgb(var(--text-tertiary))
+}
+.opacity-60 {
+    opacity: 0.6
+}
+.opacity-70 {
+    opacity: 0.7
+}
+.shadow-lg {
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
+.shadow-sm {
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
+.blur {
+    --tw-blur: blur(8px);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+.filter {
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+@keyframes enter {
+    from {
+        opacity: var(--tw-enter-opacity, 1);
+        transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0))
+    }
+}
+@keyframes exit {
+    to {
+        opacity: var(--tw-exit-opacity, 1);
+        transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0))
+    }
+}
+.hover\:bg-\[rgb\(var\(--text-primary\)\)\]:hover {
+    background-color: rgb(var(--text-primary))
+}
+@media (min-width: 768px) {
+    .md\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+    .md\:grid-cols-\[minmax\(0\2c 1fr\)_minmax\(0\2c 1\.05fr\)\] {
+        grid-template-columns: minmax(0,1fr) minmax(0,1.05fr)
+    }
+    .md\:flex-row {
+        flex-direction: row
+    }
+    .md\:items-center {
+        align-items: center
+    }
+}
+    </style>
+  </head>
+  <body>
+    <script src="https://static.devin.ai/artifact-kit/3ca8cd77f017c7a2/ds-kit.js" onerror="artifactKitFailed()"></script>
+    <script>
+      if (!window.DS) artifactKitFailed();
+    </script>
+    <main data-artifact-shell class="mx-auto flex max-w-[960px] flex-col gap-6 px-6 py-8">
+<div id="root"></div>
+<script>DSRun(" function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } }\nconst DIMS = [\n  { key: \"agua\", name: \"Abasto de agua\", unit: \"reportes de falta de agua por 1,000 hab. (12 meses)\",\n    why: \"Las colonias con tandeo o fugas frecuentes pasan días sin agua en temporada seca (mar–may).\",\n    ask: [\"¿Tiene cisterna y tinaco? ¿De qué capacidad?\", \"¿Cuántos días a la semana llega el agua?\", \"¿Hay sistema de captación de lluvia (SCALL)?\"],\n    source: \"SACMEX · Reportes de agua, Consumo de agua por colonia\", grain: \"Colonia · mensual\" },\n  { key: \"inundacion\", name: \"Inundación\", unit: \"nivel del Atlas de Riesgo por precipitación\",\n    why: \"Afecta sobre todo plantas bajas, estacionamientos y la movilidad en lluvias (jun–sep).\",\n    ask: [\"¿El departamento es planta baja o tiene sótano?\", \"¿Se ha metido el agua alguna vez?\", \"¿La calle se encharca en temporada de lluvias?\"],\n    source: \"SGIRPC · Atlas de Riesgo (precipitación)\", grain: \"Polígono de peligro\" },\n  { key: \"sismo\", name: \"Sismo y reconstrucción\", unit: \"inmuebles en reconstrucción a < 500 m\",\n    why: \"Edificios cercanos dañados en 2017 indican suelo o construcciones vulnerables en la zona.\",\n    ask: [\"¿El edificio tiene dictamen estructural posterior a 2017?\", \"¿Año de construcción?\", \"¿Tiene Director Responsable de Obra registrado?\"],\n    source: \"Comisión para la Reconstrucción · Inmuebles en atención; Padrón de DRO\", grain: \"Punto (inmueble)\" },\n  { key: \"vial\", name: \"Seguridad vial\", unit: \"incidentes viales a < 500 m (12 meses)\",\n    why: \"Importa si caminas con niños, usas bici o cruzas avenidas a diario.\",\n    ask: [\"¿Hay cruces seguros cerca de la escuela o el transporte?\"],\n    source: \"C5 · Incidentes viales; SSC · Hechos de tránsito\", grain: \"Punto · fecha y hora\" },\n  { key: \"ruido\", name: \"Ruido\", unit: \"dB estimados (día / noche)\",\n    why: \"Avenidas, bares y obras cambian mucho la calidad de sueño y el trabajo desde casa.\",\n    ask: [\"¿Las recámaras dan a la calle o al interior?\", \"¿Ventanas con doble vidrio?\"],\n    source: \"SEDEMA · Contaminación acústica\", grain: \"Polígono / corredor\" },\n  { key: \"calor\", name: \"Calor\", unit: \"temperatura media anual de la zona\",\n    why: \"Zonas más calientes y con poco arbolado elevan la temperatura interior en primavera.\",\n    ask: [\"¿Último piso o con azotea expuesta?\", \"¿Tiene ventilación cruzada?\"],\n    source: \"SEDEMA · Zonas de temperatura media anual\", grain: \"Polígono\" },\n  { key: \"granizo\", name: \"Granizo\", unit: \"nivel del Atlas de Riesgo por granizo\",\n    why: \"Puede dañar autos estacionados en la calle, domos y tragaluces.\",\n    ask: [\"¿El estacionamiento es techado?\"],\n    source: \"SGIRPC · Atlas de Riesgo (granizo)\", grain: \"Polígono de peligro\" },\n  { key: \"servicios\", name: \"Servicios a pie\", unit: \"minutos caminando a servicios básicos\",\n    why: \"Tener salud, escuela, mercado y transporte a 15 minutos ahorra tiempo y dinero cada día.\",\n    ask: [],\n    source: \"Centros de salud, Escuelas públicas, Mercados públicos y sobre ruedas, Metro/Metrobús, Ecobici, WiFi CDMX\", grain: \"Punto\" },\n];\n\nconst PATRIMONIO_META = { source: \"SEDUVI · Áreas de conservación patrimonial, Inmuebles catalogados\" };\n\nconst ADDRESSES = [\n  {\n    id: \"a\", label: \"Calle Ejemplo 120, Col. Las Arboledas\", alcaldia: \"Alcaldía Norte (ejemplo)\",\n    scores: { agua: 78, inundacion: 35, sismo: 30, vial: 41, ruido: 38, calor: 62, granizo: 55, servicios: 91 },\n    values: { agua: \"2.1 reportes / 1,000 hab.\", inundacion: \"Peligro medio-alto\", sismo: \"6 inmuebles\", vial: \"84 incidentes\", ruido: \"71 dB / 63 dB\", calor: \"17.9 °C\", granizo: \"Peligro medio\", servicios: \"Todo a < 12 min\" },\n    patrimonio: { inZone: true, text: \"Dentro de un área de conservación patrimonial: remodelaciones de fachada requieren permiso de SEDUVI.\" },\n    services: [\n      { kind: \"Centro de salud\", min: 6, x: 360, y: 150 }, { kind: \"Escuela primaria pública\", min: 4, x: 250, y: 140 },\n      { kind: \"Mercado público\", min: 9, x: 200, y: 260 }, { kind: \"Metro / Metrobús\", min: 7, x: 420, y: 250 },\n      { kind: \"Cicloestación Ecobici\", min: 3, x: 330, y: 230 }, { kind: \"WiFi gratuito\", min: 2, x: 280, y: 180 },\n    ],\n    incidents: [6, 7, 5, 8, 9, 7, 6, 8, 7, 6, 8, 7],\n    water: [0.1, 0.1, 0.3, 0.4, 0.3, 0.2, 0.1, 0.1, 0.1, 0.1, 0.1, 0.2],\n    hotspots: [{ name: \"Av. Principal y Eje 5\", n: 23 }, { name: \"Av. Principal y Calle 9\", n: 11 }, { name: \"Eje 5 y Calle Roble\", n: 7 }],\n    flood: true,\n  },\n  {\n    id: \"b\", label: \"Calle Ficticia 45, Col. Los Pinos\", alcaldia: \"Alcaldía Centro (ejemplo)\",\n    scores: { agua: 64, inundacion: 80, sismo: 68, vial: 22, ruido: 18, calor: 40, granizo: 70, servicios: 84 },\n    values: { agua: \"3.4 reportes / 1,000 hab.\", inundacion: \"Peligro bajo\", sismo: \"1 inmueble\", vial: \"131 incidentes\", ruido: \"76 dB / 69 dB\", calor: \"18.6 °C\", granizo: \"Peligro bajo\", servicios: \"Casi todo a < 15 min\" },\n    patrimonio: { inZone: false, text: \"Fuera de áreas de conservación patrimonial; 2 inmuebles catalogados a menos de 300 m.\" },\n    services: [\n      { kind: \"Centro de salud\", min: 11, x: 450, y: 120 }, { kind: \"Escuela primaria pública\", min: 8, x: 210, y: 150 },\n      { kind: \"Mercado público\", min: 5, x: 340, y: 270 }, { kind: \"Metro / Metrobús\", min: 4, x: 420, y: 250 },\n      { kind: \"Cicloestación Ecobici\", min: 5, x: 380, y: 200 }, { kind: \"WiFi gratuito\", min: 1, x: 310, y: 190 },\n    ],\n    incidents: [10, 12, 9, 11, 13, 12, 10, 11, 12, 10, 11, 10],\n    water: [0.2, 0.2, 0.4, 0.5, 0.5, 0.3, 0.2, 0.2, 0.2, 0.3, 0.2, 0.2],\n    hotspots: [{ name: \"Eje Central y Av. Juárez (ej.)\", n: 38 }, { name: \"Eje Central y Calle 3\", n: 19 }, { name: \"Calle 3 y Calle 7\", n: 9 }],\n    flood: false,\n  },\n  {\n    id: \"c\", label: \"Calle Modelo 8, Col. Valle Verde\", alcaldia: \"Alcaldía Oriente (ejemplo)\",\n    scores: { agua: 12, inundacion: 20, sismo: 45, vial: 66, ruido: 74, calor: 28, granizo: 40, servicios: 46 },\n    values: { agua: \"14.8 reportes / 1,000 hab.\", inundacion: \"Peligro alto\", sismo: \"3 inmuebles\", vial: \"39 incidentes\", ruido: \"62 dB / 52 dB\", calor: \"19.4 °C\", granizo: \"Peligro medio-alto\", servicios: \"Metro a 22 min\" },\n    patrimonio: { inZone: false, text: \"Fuera de áreas de conservación patrimonial.\" },\n    services: [\n      { kind: \"Centro de salud\", min: 14, x: 470, y: 300 }, { kind: \"Escuela primaria pública\", min: 6, x: 240, y: 230 },\n      { kind: \"Mercado sobre ruedas (mar y sáb)\", min: 8, x: 190, y: 160 }, { kind: \"Metro / Metrobús\", min: 22, x: 560, y: 250 },\n      { kind: \"Cicloestación Ecobici\", min: null, x: null, y: null }, { kind: \"WiFi gratuito\", min: 4, x: 330, y: 140 },\n    ],\n    incidents: [3, 4, 3, 2, 4, 3, 4, 3, 4, 3, 3, 3],\n    water: [0.6, 0.8, 1.6, 2.4, 2.6, 1.9, 0.9, 0.7, 0.8, 0.9, 0.8, 0.8],\n    hotspots: [{ name: \"Av. Oriente y Calle 12\", n: 9 }, { name: \"Av. Oriente y Calle 20\", n: 6 }, { name: \"Calle 12 y Calle Sur\", n: 3 }],\n    flood: true,\n  },\n];\n\nconst PROFILES = {\n  equilibrado: { label: \"Equilibrado\", w: {} },\n  familia: { label: \"Familia con niños\", w: { servicios: 2, vial: 2, agua: 1.5 } },\n  homeoffice: { label: \"Trabajo en casa\", w: { ruido: 2.5, agua: 1.5, calor: 1.5 } },\n  mayor: { label: \"Adulto mayor\", w: { servicios: 2, calor: 2, sismo: 1.5, vial: 1.5 } },\n  sinauto: { label: \"Sin auto\", w: { servicios: 2.5, vial: 1.5, granizo: 0.3 } },\n};\n\nconst MONTHS = [\"Dic\", \"Ene\", \"Feb\", \"Mar\", \"Abr\", \"May\", \"Jun\", \"Jul\", \"Ago\", \"Sep\", \"Oct\", \"Nov\"];\nconst CITY_WATER = [0.3, 0.3, 0.5, 0.8, 0.9, 0.7, 0.4, 0.3, 0.3, 0.4, 0.3, 0.3];\nconst CITY_INCIDENTS = 6;\n\nconst level = (s) => s >= 67 ? { label: \"Bien\", variant: \"success\", color: \"rgb(var(--text-green))\", text: \"text-green\" }\n  : s >= 34 ? { label: \"Regular\", variant: \"orange\", color: \"rgb(var(--text-orange))\", text: \"text-orange\" }\n  : { label: \"Atención\", variant: \"destructive\", color: \"rgb(var(--text-red))\", text: \"text-red\" };\n\nfunction profileScore(addr, profile) {\n  const w = PROFILES[profile].w;\n  let num = 0, den = 0;\n  DIMS.forEach((d) => { const wt = _nullishCoalesce(w[d.key], () => ( 1)); num += addr.scores[d.key] * wt; den += wt; });\n  return Math.round(num / den);\n}\n\nfunction verdict(addr) {\n  const sorted = DIMS.slice().sort((x, y) => addr.scores[x.key] - addr.scores[y.key]);\n  const worst = sorted.slice(0, 2).filter((d) => addr.scores[d.key] < 50).map((d) => d.name.toLowerCase());\n  const best = sorted.slice(-2).reverse().filter((d) => addr.scores[d.key] >= 67).map((d) => d.name.toLowerCase());\n  return { best, worst };\n}\n\n\nconst ICONS = {\n  agua: React.createElement('path', { d: \"M12 3c3.5 4.5 6 7.6 6 10.5A6 6 0 0 1 6 13.5C6 10.6 8.5 7.5 12 3z\"                 ,} ),\n  inundacion: React.createElement('path', { d: \"M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0\"                              ,} ),\n  sismo: React.createElement('path', { d: \"M5 21V6l7-3 7 3v15M3 21h18M12 3v5l-2 3 3 3-2 3 1 4\"           ,} ),\n  vial: React.createElement('path', { d: \"M4 16h16v-3l-2-5H6l-2 5v3zM4 13h16M7 19.5a1.5 1.5 0 1 0 0-3M17 19.5a1.5 1.5 0 1 0 0-3M7 16.5v3M17 16.5v3\"                 ,} ),\n  ruido: React.createElement('path', { d: \"M4 10v4h4l5 4V6L8 10H4zM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11\"                 ,} ),\n  calor: React.createElement('g', null, React.createElement('circle', { cx: \"12\", cy: \"12\", r: \"4\",} ), React.createElement('path', { d: \"M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"          ,} )),\n  granizo: React.createElement('g', null, React.createElement('path', { d: \"M7 14a4 4 0 0 1 .5-8A5 5 0 0 1 17 7a3.5 3.5 0 0 1 0 7H7z\"                  ,} ), React.createElement('circle', { cx: \"8\", cy: \"18\", r: \"1\",} ), React.createElement('circle', { cx: \"12\", cy: \"20.5\", r: \"1\",} ), React.createElement('circle', { cx: \"16\", cy: \"18\", r: \"1\",} )),\n  servicios: React.createElement('g', null, React.createElement('path', { d: \"M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z\"          ,} ), React.createElement('circle', { cx: \"12\", cy: \"10\", r: \"2\",} )),\n  patrimonio: React.createElement('path', { d: \"M3 9l9-5 9 5M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 20h18\"        ,} ),\n  salud: React.createElement('path', { d: \"M12 5v14M5 12h14\"  ,} ),\n  escuela: React.createElement('path', { d: \"M3 9l9-4 9 4-9 4-9-4zM7 11v4c3 2 7 2 10 0v-4\"          ,} ),\n  mercado: React.createElement('path', { d: \"M5 9h14l-1.5 9h-11L5 9zM9 9l3-5 3 5\"      ,} ),\n  transporte: React.createElement('path', { d: \"M7 4h10a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM5 11h14M9 21l1-4M15 21l-1-4\"                        ,} ),\n  bici: React.createElement('g', null, React.createElement('circle', { cx: \"6\", cy: \"16\", r: \"3\",} ), React.createElement('circle', { cx: \"18\", cy: \"16\", r: \"3\",} ), React.createElement('path', { d: \"M6 16l4-7h5l3 7M10 9l2 7h-6\"    ,} )),\n  wifi: React.createElement('g', null, React.createElement('path', { d: \"M4 9a12 12 0 0 1 16 0M7 12.5a7.5 7.5 0 0 1 10 0M10 16a3 3 0 0 1 4 0\"                     ,} ), React.createElement('circle', { cx: \"12\", cy: \"19\", r: \"0.8\",} )),\n};\nconst SERVICE_ICON = (kind) => kind.startsWith(\"Centro\") ? \"salud\" : kind.startsWith(\"Escuela\") ? \"escuela\" : kind.startsWith(\"Mercado\") ? \"mercado\" : kind.startsWith(\"Metro\") ? \"transporte\" : kind.startsWith(\"Ciclo\") ? \"bici\" : \"wifi\";\n\nfunction Icon({ name, size = 20, className = \"\" }) {\n  return (\n    React.createElement('svg', { width: size, height: size, viewBox: \"0 0 24 24\"   , fill: \"none\", stroke: \"currentColor\", strokeWidth: \"1.7\", strokeLinecap: \"round\", strokeLinejoin: \"round\", className: className,}, ICONS[name])\n  );\n}\n\nconst SHORT = { agua: \"Agua\", inundacion: \"Inundación\", sismo: \"Sismo\", vial: \"Seg. vial\", ruido: \"Ruido\", calor: \"Calor\", granizo: \"Granizo\", servicios: \"Servicios\" };\n\nfunction polar(c, r, deg) { const a = (deg - 90) * Math.PI / 180; return [c + r * Math.cos(a), c + r * Math.sin(a)]; }\nfunction wedge(c, r0, r1, a1, a2) {\n  const large = a2 - a1 > 180 ? 1 : 0;\n  const [x1, y1] = polar(c, r0, a1), [x2, y2] = polar(c, r1, a1), [x3, y3] = polar(c, r1, a2), [x4, y4] = polar(c, r0, a2);\n  return `M${x1},${y1} L${x2},${y2} A${r1},${r1} 0 ${large} 1 ${x3},${y3} L${x4},${y4} A${r0},${r0} 0 ${large} 0 ${x1},${y1} Z`;\n}\nfunction spans(profile) {\n  const w = PROFILES[profile].w;\n  const ws = DIMS.map((d) => _nullishCoalesce(w[d.key], () => ( 1)));\n  const tot = ws.reduce((a, b) => a + b, 0);\n  let a = 0;\n  return DIMS.map((d, i) => { const span = 360 * ws[i] / tot; const s = { key: d.key, a1: a, a2: a + span, mid: a + span / 2 }; a += span; return s; });\n}\n\nfunction Flower({ addr, profile, size = 340, selected, onSelect, icons = true }) {\n  const c = size / 2, r0 = size * 0.15, R = size * (icons ? 0.37 : 0.47);\n  const sp = spans(profile);\n  const score = profileScore(addr, profile);\n  return (\n    React.createElement('div', { className: \"relative\", style: { width: size, height: size },}\n      , React.createElement('svg', { width: size, height: size, viewBox: `0 0 ${size} ${size}`,}\n        , sp.map((p) => {\n          const s = addr.scores[p.key];\n          const sel = selected === p.key;\n          return (\n            React.createElement('g', { key: p.key, onClick: onSelect ? () => onSelect(p.key) : undefined, style: { cursor: onSelect ? \"pointer\" : \"default\" },}\n              , React.createElement('path', { d: wedge(c, r0, R, p.a1 + 1.2, p.a2 - 1.2), fill: \"currentColor\", className: \"text-tertiary\", fillOpacity: \"0.1\",} )\n              , React.createElement('path', { d: wedge(c, r0, r0 + (R - r0) * Math.max(s, 6) / 100, p.a1 + 1.2, p.a2 - 1.2), fill: level(s).color, fillOpacity: sel ? 1 : 0.75, stroke: sel ? \"currentColor\" : \"none\", strokeWidth: \"2\", className: \"text-primary\",} )\n            )\n          );\n        })\n        , React.createElement('circle', { cx: c, cy: c, r: R, fill: \"none\", stroke: \"currentColor\", className: \"text-tertiary\", strokeOpacity: \"0.25\", strokeDasharray: \"2 4\" ,} )\n        , React.createElement('text', { x: c, y: c + size * 0.035, textAnchor: \"middle\", fontSize: size * 0.12, fontWeight: \"600\", fill: level(score).color,}, score)\n      )\n      , icons && sp.map((p) => {\n        const [x, y] = polar(c, R + 24, p.mid);\n        const s = addr.scores[p.key];\n        return (\n          React.createElement('div', { key: p.key, className: \"absolute\", style: { left: x - 16, top: y - 16 },}\n            , React.createElement(Tooltip, { content: `${SHORT[p.key]} · ${level(s).label}`,}\n              , React.createElement(IconButton, { size: \"md\", shape: \"circle\", variant: selected === p.key ? \"secondary\" : \"ghost\", 'aria-label': SHORT[p.key], onClick: () => onSelect && onSelect(p.key),}\n                , React.createElement('span', { className: level(s).text,}, React.createElement(Icon, { name: p.key, size: 18,} ))\n              )\n            )\n            , React.createElement('div', { className: `absolute left-1/2 -translate-x-1/2 whitespace-nowrap ${y < c ? \"top-[-14px]\" : \"top-[32px]\"}`,}, React.createElement(Text, { size: 10, className: \"text-tertiary\",}, SHORT[p.key]))\n          )\n        );\n      })\n    )\n  );\n}\n\n\nfunction rng(seed) { let s = seed; return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; }; }\nconst SCALE4 = [\"Bajo\", \"Medio\", \"Medio-alto\", \"Alto\"];\nconst scaleIdx = (txt) => txt.includes(\"alto\") && txt.includes(\"medio\") ? 2 : txt.includes(\"alto\") ? 3 : txt.includes(\"medio\") ? 1 : 0;\nconst maxWalk = (a) => Math.max(...a.services.filter((s) => s.min != null).map((s) => s.min));\nconst PROFILE_SHORT = { equilibrado: \"Equilibrado\", familia: \"Familia\", homeoffice: \"Home office\", mayor: \"Adulto mayor\", sinauto: \"Sin auto\" };\n\nfunction card(addr, k) {\n  const v = addr.values[k];\n  if (k === \"agua\") return { big: v.split(\" \")[0], unit: \"reportes / 1k hab.\" };\n  if (k === \"inundacion\" || k === \"granizo\") return { big: `${scaleIdx(v.toLowerCase()) + 1}/4`, unit: \"nivel de peligro\" };\n  if (k === \"sismo\") return { big: `${parseInt(v, 10)}`, unit: \"edif. dañados\" };\n  if (k === \"vial\") return { big: `${parseInt(v, 10)}`, unit: \"incidentes / año\" };\n  if (k === \"ruido\") return { big: v.split(\" \")[0], unit: \"dB de día\" };\n  if (k === \"calor\") return { big: `${parseFloat(v)}°`, unit: \"media anual\" };\n  return { big: `${maxWalk(addr)}′`, unit: \"máx. a pie\" };\n}\n\nfunction callout(addr, k) {\n  const pct = { v: `${addr.scores[k]}%`, l: \"colonias por debajo\" };\n  if (k === \"agua\") {\n    const i = addr.water.indexOf(Math.max(...addr.water));\n    const ratio = addr.water.reduce((a, b) => a + b, 0) / CITY_WATER.reduce((a, b) => a + b, 0);\n    return [{ v: MONTHS[i], l: \"mes más crítico\" }, { v: `${ratio.toFixed(1)}×`, l: \"vs. promedio CDMX\" }, pct];\n  }\n  if (k === \"inundacion\") return [{ v: card(addr, k).big, l: \"nivel de peligro\" }, { v: \"Jun–Sep\", l: \"temporada\" }, pct];\n  if (k === \"granizo\") return [{ v: card(addr, k).big, l: \"nivel de peligro\" }, { v: \"May–Ago\", l: \"temporada\" }, pct];\n  if (k === \"sismo\") return [{ v: card(addr, k).big, l: \"edificios dañados\" }, { v: \"500 m\", l: \"radio\" }, pct];\n  if (k === \"vial\") {\n    const tot = addr.incidents.reduce((a, b) => a + b, 0);\n    return [{ v: `${tot}`, l: \"incidentes / año\" }, { v: `${(tot / 12 / CITY_INCIDENTS).toFixed(1)}×`, l: \"vs. promedio CDMX\" }, pct];\n  }\n  if (k === \"ruido\") { const [d, n] = addr.values.ruido.match(/\\d+/g); return [{ v: `${d} dB`, l: \"día\" }, { v: `${n} dB`, l: \"noche\" }, pct]; }\n  if (k === \"calor\") { const t = parseFloat(addr.values.calor); return [{ v: `${t}°`, l: \"media anual\" }, { v: `${t >= 17.5 ? \"+\" : \"\"}${(t - 17.5).toFixed(1)}°`, l: \"vs. mediana CDMX\" }, pct]; }\n  const near = addr.services.filter((s) => s.min != null && s.min <= 15).length;\n  return [{ v: `${near}/${addr.services.length}`, l: \"servicios a < 15 min\" }, { v: `${maxWalk(addr)}′`, l: \"el más lejano\" }, pct];\n}\n\nconst PIN = [300, 300];\nfunction heat(addr, k) {\n  const r = rng(addr.id.charCodeAt(0) * 13);\n  const bad = (100 - addr.scores[k]) / 100;\n  if (k === \"inundacion\") return addr.flood ? [{ x: 170, y: 470, r: 210, c: \"text-blue\", o: 0.75 }, { x: 330, y: 420, r: 120, c: \"text-blue\", o: 0.6 }] : [{ x: 80, y: 540, r: 90, c: \"text-blue\", o: 0.4 }];\n  if (k === \"granizo\") return [{ x: 360, y: 220, r: 240, c: \"text-purple\", o: 0.2 + bad * 0.5 }];\n  if (k === \"calor\") return [{ x: 300, y: 300, r: 300, c: \"text-orange\", o: 0.25 + bad * 0.55 }, { x: 260, y: 330, r: 140, c: \"text-red\", o: bad * 0.6 }];\n  if (k === \"agua\") return [{ x: 300, y: 300, r: 260, c: level(addr.scores.agua).text, o: 0.25 + bad * 0.5 }];\n  if (k === \"ruido\") return [{ line: true, c: \"text-orange\", o: 0.3 + bad * 0.6 }];\n  if (k === \"vial\") return [[420, 380], [420, 170], [210, 380]].map(([x, y], i) => ({ x, y, r: 30 + addr.hotspots[i].n * 2.2, c: \"text-red\", o: 0.75 }));\n  if (k === \"sismo\") return Array.from({ length: parseInt(addr.values.sismo, 10) || 0 }, () => ({ x: 300 + (r() - 0.5) * 300, y: 300 + (r() - 0.5) * 300, r: 46, c: \"text-red\", o: 0.7 }));\n  return [{ x: 300, y: 300, r: 165, c: \"text-green\", o: 0.35 }];\n}\n\nfunction CityMap({ addr, k }) {\n  const blobs = heat(addr, k);\n  const stats = callout(addr, k);\n  const svc = k === \"servicios\" ? addr.services.filter((s) => s.x != null) : [];\n  return (\n    React.createElement('div', { className: \"relative h-full min-h-[460px] w-full overflow-hidden rounded-2xl bg-wash\"      ,}\n      , React.createElement('svg', { viewBox: \"0 0 600 600\"   , preserveAspectRatio: \"xMidYMid slice\" , className: \"absolute inset-0 h-full w-full\"   ,}\n        , React.createElement('defs', null\n          , React.createElement('filter', { id: \"blur\", x: \"-50%\", y: \"-50%\", width: \"200%\", height: \"200%\",}, React.createElement('feGaussianBlur', { stdDeviation: \"28\",} ))\n        )\n        , React.createElement('g', { transform: \"rotate(-24 300 300)\"  ,}\n          , Array.from({ length: 26 }, (_, i) => React.createElement('line', { key: \"a\" + i, x1: -300 + i * 46, y1: \"-300\", x2: -300 + i * 46, y2: \"900\", stroke: \"currentColor\", className: \"text-tertiary\", strokeOpacity: \"0.22\", strokeWidth: \"1.5\",} ))\n          , Array.from({ length: 40 }, (_, i) => React.createElement('line', { key: \"b\" + i, x1: \"-300\", y1: -300 + i * 30, x2: \"900\", y2: -300 + i * 30, stroke: \"currentColor\", className: \"text-tertiary\", strokeOpacity: \"0.14\",} ))\n          , React.createElement('rect', { x: \"120\", y: \"96\", width: \"92\", height: \"90\", rx: \"4\", className: \"text-green\", fill: \"currentColor\", fillOpacity: \"0.18\",} )\n          , React.createElement('rect', { x: \"400\", y: \"440\", width: \"46\", height: \"60\", rx: \"4\", className: \"text-green\", fill: \"currentColor\", fillOpacity: \"0.18\",} )\n        )\n        , React.createElement('path', { d: \"M-20,600 C60,520 40,430 -20,380\"   , className: \"text-blue\", fill: \"none\", stroke: \"currentColor\", strokeOpacity: \"0.2\", strokeWidth: \"40\",} )\n        , React.createElement('line', { x1: \"0\", y1: \"380\", x2: \"600\", y2: \"380\", stroke: \"currentColor\", className: \"text-tertiary\", strokeOpacity: \"0.35\", strokeWidth: \"7\",} )\n        , React.createElement('line', { x1: \"420\", y1: \"0\", x2: \"420\", y2: \"600\", stroke: \"currentColor\", className: \"text-tertiary\", strokeOpacity: \"0.35\", strokeWidth: \"7\",} )\n        , React.createElement('g', { filter: \"url(#blur)\",}\n          , blobs.map((b, i) => b.line ? (\n            React.createElement('g', { key: i, className: b.c, stroke: \"currentColor\", strokeOpacity: b.o, strokeWidth: \"70\",}, React.createElement('line', { x1: \"0\", y1: \"380\", x2: \"600\", y2: \"380\",} ), React.createElement('line', { x1: \"420\", y1: \"0\", x2: \"420\", y2: \"600\",} ))\n          ) : React.createElement('circle', { key: i, cx: b.x, cy: b.y, r: b.r, className: b.c, fill: \"currentColor\", fillOpacity: b.o * 0.7,} ))\n        )\n        , addr.patrimonio.inZone && React.createElement('rect', { x: \"170\", y: \"150\", width: \"260\", height: \"190\", rx: \"10\", className: \"text-purple\", fill: \"none\", stroke: \"currentColor\", strokeOpacity: \"0.7\", strokeDasharray: \"6 5\" ,} )\n        , React.createElement('circle', { cx: PIN[0], cy: PIN[1], r: \"130\", fill: \"none\", stroke: \"currentColor\", className: \"text-primary\", strokeOpacity: \"0.35\", strokeDasharray: \"3 6\" ,} )\n        , svc.map((s, i) => {\n          const [x, y] = polar(PIN[0], 28 + Math.min(s.min, 25) * 9, 95 + i * 170 / Math.max(svc.length - 1, 1));\n          return (\n            React.createElement('g', { key: s.kind,}\n              , React.createElement('circle', { cx: x, cy: y, r: \"14\", className: \"text-primary\", fill: \"currentColor\",} )\n              , React.createElement('g', { transform: `translate(${x - 9},${y - 9}) scale(0.75)`, fill: \"none\", strokeWidth: \"2\", strokeLinecap: \"round\", strokeLinejoin: \"round\", className: \"stroke-[rgb(var(--bg-elevated))]\",}, ICONS[SERVICE_ICON(s.kind)])\n            )\n          );\n        })\n        , React.createElement('circle', { cx: PIN[0], cy: PIN[1], r: \"20\", className: \"text-primary\", fill: \"currentColor\", fillOpacity: \"0.15\",} )\n        , React.createElement('circle', { cx: PIN[0], cy: PIN[1], r: \"7\", className: \"text-primary\", fill: \"currentColor\", stroke: \"currentColor\", strokeWidth: \"0\",} )\n        , React.createElement('circle', { cx: PIN[0], cy: PIN[1], r: \"3\", className: \"fill-[rgb(var(--bg-elevated))]\",} )\n      )\n      , React.createElement('div', { className: \"absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[calc(100%+28px)]\"    ,}\n        , React.createElement('div', { className: \"flex items-stretch rounded-2xl bg-[rgb(var(--text-primary))] px-2 py-3 text-[rgb(var(--bg-elevated))] shadow-lg\"       ,}\n          , stats.map((st, i) => (\n            React.createElement('div', { key: i, className: `flex min-w-[88px] flex-col items-center px-3 ${i > 0 ? \"border-l border-[rgb(var(--bg-elevated)/0.2)]\" : \"\"}`,}\n              , React.createElement('span', { className: \"whitespace-nowrap text-[24px] font-light leading-tight\"   ,}, st.v)\n              , React.createElement('span', { className: \"whitespace-nowrap text-[10px] opacity-70\"  ,}, st.l)\n            )\n          ))\n        )\n        , React.createElement('div', { className: \"mx-auto h-3 w-3 -translate-y-1.5 rotate-45 bg-[rgb(var(--text-primary))]\"     ,} )\n      )\n      , React.createElement('div', { className: \"absolute left-3 top-3 flex items-center gap-2 rounded-full bg-elevated px-3 py-1.5 shadow-sm\"          ,}\n        , React.createElement('span', { className: level(addr.scores[k]).text,}, React.createElement(Icon, { name: k, size: 14,} ))\n        , React.createElement(Text, { size: 12, weight: \"medium\",}, \"Capa: \" , DIMS.find((d) => d.key === k).name)\n      )\n      , addr.patrimonio.inZone && (\n        React.createElement('div', { className: \"absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-elevated px-3 py-1.5 text-purple shadow-sm\"           ,}\n          , React.createElement(Icon, { name: \"patrimonio\", size: 14,} ), React.createElement(Text, { size: 11,}, \"Zona patrimonial\" )\n        )\n      )\n      , React.createElement('div', { className: \"absolute bottom-3 right-3 rounded-full bg-elevated px-3 py-1.5 shadow-sm\"       ,}, React.createElement(Text, { size: 11, className: \"text-tertiary\",}, \"Círculo punteado = 500 m · 6 min a pie\"         ))\n    )\n  );\n}\n\nfunction TopicCard({ addr, k, selected, onClick }) {\n  const c = card(addr, k);\n  const lv = level(addr.scores[k]);\n  return (\n    React.createElement(Button, { variant: \"ghost\", onClick: onClick,\n      className: `!h-auto !justify-start !rounded-2xl !p-0 border ${selected ? \"border-[rgb(var(--text-primary))] bg-[rgb(var(--text-primary))] text-[rgb(var(--bg-elevated))] hover:bg-[rgb(var(--text-primary))]\" : \"border-primary bg-elevated\"}`,}\n      , React.createElement('div', { className: \"flex w-full flex-col items-start gap-3 p-3 text-left\"      ,}\n        , React.createElement('div', { className: \"flex w-full items-center justify-between\"   ,}\n          , React.createElement('span', { className: `flex h-8 w-8 items-center justify-center rounded-full ${selected ? \"bg-[rgb(var(--bg-elevated)/0.15)]\" : \"bg-wash\"} ${lv.text}`,}, React.createElement(Icon, { name: k, size: 16,} ))\n          , React.createElement('span', { className: \"h-2 w-2 rounded-full\"  , style: { background: lv.color },} )\n        )\n        , React.createElement('div', { className: \"flex flex-col\" ,}\n          , React.createElement('span', { className: \"text-[11px] opacity-70\" ,}, SHORT[k])\n          , React.createElement('span', { className: \"text-[24px] font-light leading-none\"  ,}, c.big)\n          , React.createElement('span', { className: \"mt-1 text-[10px] opacity-60\"  ,}, c.unit)\n        )\n      )\n    )\n  );\n}\n\nfunction PercentTrack({ addr, k }) {\n  const s = addr.scores[k];\n  const lv = level(s);\n  return (\n    React.createElement('div', { className: \"flex flex-col gap-2 rounded-2xl bg-wash px-4 pb-3 pt-3\"       ,}\n      , React.createElement('div', { className: \"flex items-center justify-between\"  ,}\n        , React.createElement(Text, { size: 12, className: \"text-secondary\",}, \"Frente a las colonias de la CDMX\"      )\n        , React.createElement(Text, { size: 12, weight: \"semibold\", className: lv.text,}, lv.label)\n      )\n      , React.createElement('div', { className: \"relative mt-5 h-6\"  ,}\n        , React.createElement('div', { className: \"absolute inset-x-0 top-2 h-2 rounded-full bg-[rgb(var(--text-tertiary)/0.15)]\"     ,} )\n        , React.createElement('div', { className: \"absolute left-0 top-2 h-2 rounded-full\"    , style: { width: `${s}%`, background: lv.color },} )\n        , React.createElement('div', { className: \"absolute -top-5 -translate-x-1/2\"  , style: { left: `${s}%` },}\n          , React.createElement('div', { className: \"rounded-md bg-[rgb(var(--text-primary))] px-1.5 py-0.5 text-[10px] font-semibold text-[rgb(var(--bg-elevated))]\"      ,}, s)\n        )\n        , React.createElement('div', { className: \"absolute top-1 h-4 w-4 -translate-x-1/2 rounded-full border-2 bg-elevated\"       , style: { left: `${s}%`, borderColor: lv.color },} )\n        , React.createElement('div', { className: \"absolute inset-x-0 top-5 flex justify-between\"    ,}\n          , [\"Peor\", \"Mediana\", \"Mejor\"].map((t) => React.createElement(Text, { key: t, size: 10, className: \"text-tertiary\",}, t))\n        )\n      )\n    )\n  );\n}\n\nfunction Compare({ profile, onPick }) {\n  return (\n    React.createElement('div', { className: \"flex flex-col gap-6\"  ,}\n      , React.createElement('div', { className: \"grid grid-cols-1 gap-4 md:grid-cols-3\"   ,}\n        , ADDRESSES.map((a) => (\n          React.createElement('div', { key: a.id, className: \"flex flex-col items-center gap-2\"   ,}\n            , React.createElement(Flower, { addr: a, profile: profile, size: 190, icons: false,} )\n            , React.createElement(Text, { size: 13, weight: \"medium\",}, a.label.split(\",\")[1].trim())\n            , React.createElement(Button, { size: \"sm\", variant: \"ghost\", onClick: () => onPick(a.id),}, \"Ver reporte\" )\n          )\n        ))\n      )\n      , React.createElement('div', { className: \"flex flex-col gap-2\"  ,}\n        , DIMS.map((d) => (\n          React.createElement('div', { key: d.key, className: \"grid grid-cols-[140px_1fr_1fr_1fr] items-center\"  ,}\n            , React.createElement('span', { className: \"flex items-center gap-2 text-secondary\"   ,}, React.createElement(Icon, { name: d.key, size: 16,} ), React.createElement(Text, { size: 12,}, SHORT[d.key]))\n            , ADDRESSES.map((a) => { const s = a.scores[d.key]; return (\n              React.createElement('div', { key: a.id, className: \"flex justify-center\" ,}\n                , React.createElement('div', { className: \"rounded-full\", style: { width: 8 + s / 5, height: 8 + s / 5, background: level(s).color, opacity: 0.9 }, title: `${a.values[d.key]}`,} )\n              )); })\n          )\n        ))\n        , React.createElement(Text, { size: 10, className: \"text-tertiary\",}, \"Círculo más grande = mejor que más colonias de la ciudad\"          )\n      )\n    )\n  );\n}\n\nfunction Report() {\n  const [addrId, setAddrId] = useState(\"a\");\n  const [profile, setProfile] = useState(\"equilibrado\");\n  const [k, setK] = useState(\"servicios\");\n  const [view, setView] = useState(\"resumen\");\n  const addr = ADDRESSES.find((a) => a.id === addrId);\n  const v = verdict(addr);\n  const score = profileScore(addr, profile);\n  const dim = DIMS.find((d) => d.key === k);\n  return (\n    React.createElement(PageLayout, { title: \"Antes de rentar\"  , subtitle: \"Maqueta interactiva con datos ficticios, estilo dashboard con mapa.\"        ,}\n      , React.createElement('div', { className: \"flex flex-col gap-3 md:flex-row md:items-center\"    ,}\n        , React.createElement('div', { className: \"flex-1\",}, React.createElement(SimpleSelect, { options: ADDRESSES.map((a) => ({ value: a.id, label: a.label })), value: addrId, onValueChange: setAddrId,} ))\n        , React.createElement(SegmentedControl, { value: view, onValueChange: (x) => x && setView(x), size: \"small\", variant: \"rounded\",}\n          , React.createElement(SegmentedControlItem, { value: \"resumen\",}, \"Reporte\")\n          , React.createElement(SegmentedControlItem, { value: \"comparar\",}, \"Comparar\")\n        )\n      )\n\n      , React.createElement('div', { className: \"flex gap-1 rounded-xl bg-wash p-1\"    ,}\n        , Object.keys(PROFILES).map((key) => (\n          React.createElement(Button, { key: key, size: \"sm\", variant: profile === key ? \"primary\" : \"ghost\", className: \"flex-1\", onClick: () => setProfile(key),}, PROFILE_SHORT[key])\n        ))\n      )\n\n      , view === \"resumen\" && (\n        React.createElement('div', { className: \"grid grid-cols-1 gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]\"   ,}\n          , React.createElement('div', { className: \"flex flex-col gap-3\"  ,}\n            , React.createElement('div', { className: \"flex items-center gap-4 rounded-2xl border border-primary bg-elevated p-3\"       ,}\n              , React.createElement(Flower, { addr: addr, profile: profile, size: 92, icons: false,} )\n              , React.createElement('div', { className: \"flex flex-col gap-0.5\"  ,}\n                , React.createElement(Text, { size: 11, className: \"text-tertiary\",}, \"Puntaje para ti\"  )\n                , React.createElement('span', { className: \"text-[13px]\",}, React.createElement('span', { className: `text-[34px] font-light leading-none ${level(score).text}`,}, score), React.createElement('span', { className: \"text-tertiary\",}, \" / 100\"  ))\n                , v.best.length > 0 && React.createElement(Text, { size: 11, className: \"text-secondary\",}, React.createElement('span', { className: \"text-green\",}, \"Destaca:\"), \" \" , v.best.join(\", \"))\n                , v.worst.length > 0 && React.createElement(Text, { size: 11, className: \"text-secondary\",}, React.createElement('span', { className: \"text-red\",}, \"Revisa:\"), \" \" , v.worst.join(\", \"))\n              )\n            )\n            , React.createElement('div', { className: \"grid grid-cols-4 gap-2\"  ,}\n              , DIMS.map((d) => React.createElement(TopicCard, { key: d.key, addr: addr, k: d.key, selected: k === d.key, onClick: () => setK(d.key),} ))\n            )\n            , React.createElement(PercentTrack, { addr: addr, k: k,} )\n            , dim.ask.length > 0 && (\n              React.createElement(CollapsibleRoot, { key: k,}\n                , React.createElement(CollapsibleTrigger, null, React.createElement(Text, { size: 12, weight: \"medium\",}, \"Pregunta al arrendador (\"   , dim.ask.length, \")\"))\n                , React.createElement(CollapsiblePanel, null\n                  , React.createElement('div', { className: \"mt-2 flex flex-col gap-1\"   ,}, dim.ask.map((q) => React.createElement(Text, { key: q, size: 12, className: \"text-secondary\",}, q)))\n                )\n              )\n            )\n          )\n          , React.createElement('div', { className: \"flex flex-col gap-3\"  ,}\n            , React.createElement('div', { className: \"flex-1\",}, React.createElement(CityMap, { addr: addr, k: k,} ))\n            , React.createElement(Button, { variant: \"primary\", size: \"lg\", className: \"w-full !rounded-2xl\" ,}, \"Compartir reporte por WhatsApp\"   )\n          )\n        )\n      )\n      , view === \"comparar\" && React.createElement(Compare, { profile: profile, onPick: (id) => { setAddrId(id); setView(\"resumen\"); },} )\n\n      , React.createElement(Footnote, null, \"Datos y mapa ficticios. Fuentes previstas: Portal de Datos Abiertos CDMX (SACMEX, SGIRPC, C5, SSC, SEDEMA, SEDUVI). \"                 , dim.source, \".\")\n    )\n  );\n}\nrender(React.createElement(Report, null ));\n")</script>
+    </main>
+  </body>
+</html>
