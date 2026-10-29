@@ -4,7 +4,7 @@ Reporte por dirección para quien va a rentar o comprar en la CDMX. Cubre inunda
 
 Diseño de referencia: [`docs/design/prototipo-dashboard.html`](design/prototipo-dashboard.html). Sus datos son ficticios. Cada tema es una tarjeta, el mapa muestra la capa de calor del tema elegido y el globo sobre el pin da 3 datos clave.
 
-## Arquitectura (sin backend)
+## Arquitectura
 
 ```
 datos.cdmx.gob.mx (CKAN) ──fetch──▶ data/raw/<dataset>/ (fuera de git, publicado como GitHub Release)
@@ -15,12 +15,15 @@ datos.cdmx.gob.mx (CKAN) ──fetch──▶ data/raw/<dataset>/ (fuera de git,
                     pipeline/build.py ──▶ web/public/data/cells/<h3_res6>.json   (puntajes por celda, en shards)
                                       ──▶ web/public/data/layers/<tema>.pmtiles  (capas del mapa)
                                       ▼
-                    web/  (Vite + React + TypeScript + MapLibre GL + PMTiles) → sitio estático
+                    web/  (Next.js 16 App Router + TypeScript + MapLibre GL + PMTiles) → Vercel
 ```
 
 - **Unidad espacial:** hexágonos H3 de resolución 9. Una dirección se convierte a celda, y la celda trae los puntajes ya calculados. Así no hay cálculos geoespaciales en tiempo de ejecución.
 - **Puntaje:** el percentil de la celda contra todas las celdas habitadas de la CDMX. Entre más alto, mejor. "Patrimonio" es solo informativo y no entra al puntaje. Los pesos por perfil viven en el frontend (`web/src/profiles.ts`).
-- **Hosting:** estático (GitHub Pages o Vercel). Los datos procesados se publican como artefactos del build.
+- **Hosting:** Vercel (deploy automático por push). Casi todo el sitio es estático; dos *route handlers* añaden lo que un estático puro no puede:
+  - `web/src/app/api/geocode/route.ts` — proxy de geocodificación. Nominatim por default (sin key); MapTiler con `GEOCODER=maptiler` + `MAPTILER_KEY`, sin exponer la key al cliente.
+  - `web/src/app/reporte/[h3]/opengraph-image.tsx` — imagen OG dinámica por dirección, con sus puntajes, para compartir por WhatsApp/redes.
+- **Rutas:** `/reporte/<h3>?perfil=&tema=` es la URL compartible; el estado del reporte vive en el querystring.
 
 ## Contratos (fase 0, antes de paralelizar)
 
@@ -33,7 +36,7 @@ Todos los agentes trabajan contra estos contratos. Mientras no haya datos reales
 | Celda final | `contracts/cell.schema.json` | puntajes y valores de los 8 temas + patrimonio + servicios cercanos |
 | Capa de mapa | `contracts/layer.md` | nombre de la capa PMTiles, propiedades y rampa de color |
 | Fixtures | `fixtures/` | 3 direcciones de ejemplo del prototipo, en formato `cell.schema.json` |
-| Registro de temas | auto-descubrimiento | `pipeline/topics/*.py` y `web/src/topics/*.ts` se cargan solos, sin lista central que editar |
+| Registro de temas | auto-descubrimiento | `pipeline/topics/*.py` y `web/src/topics/*.ts` se cargan solos (en web vía `scripts/gen-topics-index.mjs`), sin lista central que editar |
 
 El auto-descubrimiento evita conflictos de merge: cada agente solo **agrega** archivos en su carpeta.
 
@@ -72,7 +75,7 @@ Cada agente trabaja en su propia rama, abre su propio PR y solo toca su carpeta.
 | D7 | `pipeline/topics/servicios.py` | `centros-de-salud`, `hospitales-y-centros-de-salud`, `escuelas-publicas`, `mercados-publicos`, `mercados-sobre-ruedas`, `lineas-y-estaciones-del-metro`, Metrobús, Ecobici, `puntos-de-acceso-wifi-en-la-ciudad-de-mexico` | minutos a pie al más cercano de cada tipo | fase 0 |
 | F1 | `web/src/{app,components,profiles.ts}` | fixtures | shell, tarjetas por tema, barra de percentil, perfiles, Comparar | fase 0 |
 | F2 | `web/src/map/` | fixtures + PMTiles de ejemplo | MapLibre, mapa base, capas de calor por tema, globo de 3 datos, radio de 500 m | fase 0 |
-| F3 | `web/src/{search,share}/` | índice de D1 (fixture mientras tanto) | buscador de dirección/colonia/CP, estado en la URL, compartir por WhatsApp, imagen OG | fase 0 |
+| F3 | `web/src/{search,share}/`, `web/src/app/api/`, `web/src/app/reporte/[h3]/opengraph-image.tsx` | índice de D1 (fixture mientras tanto) | buscador de dirección/colonia/CP, estado en la URL, compartir por WhatsApp, imagen OG | fase 0 |
 
 Definición de terminado para cada tema `Dx`: el módulo lee `data/raw/` (o el fixture), escribe `data/processed/<tema>.parquet` cumpliendo `topic_output.schema.json`, pasa sus pruebas (`pytest pipeline/topics/test_<tema>.py`) y documenta en `data/manifest/<tema>.yaml` el CRS, la columna de fecha y cualquier problema de calidad que encuentre.
 
@@ -94,7 +97,7 @@ Riesgos que conviene validar primero (son tarea de D0 y D1): que cada dataset de
 
 ## Decisiones abiertas
 
-- Geocodificación de direcciones: Nominatim/OSM (gratis, con límite de uso), MapTiler o Mapbox (con API key), o solo colonia/CP con el índice local de D1.
+- Geocodificación de direcciones: resuelto de inicio con el route handler `/api/geocode` — Nominatim (default, gratis) o MapTiler con key en servidor. Sigue abierto si hace falta el índice local colonia/CP de D1 para búsqueda sin geocodificador externo.
 - Tiempo a pie: distancia en línea recta × 1.3 (simple) o red peatonal de OSM con OSMnx (más preciso y más trabajo).
-- Mapa base: tiles de OpenFreeMap/Protomaps (sin key) o MapTiler.
+- Mapa base: OpenFreeMap Positron por default (sin key), configurable con `NEXT_PUBLIC_BASEMAP_URL`.
 - Delitos (FGJ): no incluidos por ahora, por el riesgo de estigmatizar colonias.
