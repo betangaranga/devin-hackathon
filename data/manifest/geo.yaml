@@ -1,0 +1,48 @@
+# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+owner: D1
+portal: https://datos.cdmx.gob.mx
+datasets:
+- id: catalogo-de-colonias-datos-abiertos
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''
+- id: codigos-postales
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''
+- id: caracteristicas-demograficas-de-la-poblacion-ageb-censo-2020
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''
+- id: caracteristicas-de-las-viviendas-nivel-ageb-censo-2020
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''

@@ -9,3 +9,16 @@ Instrucciones para agentes que trabajan en este repo. El plan completo está en 
 - Coordenadas internas en EPSG:4326; reproyecta al leer. Mide distancias en EPSG:32614 (UTM 14N).
 - Puntajes de 0 a 100 donde más alto = mejor, calculados como percentil contra las celdas habitadas de la CDMX.
 - Una rama y un PR por tarea. Corre las pruebas de tu carpeta antes de abrir el PR.
+
+## Comandos
+
+```bash
+python -m venv .venv && . .venv/bin/activate && pip install -e ".[dev]"
+pytest -q                                   # pruebas del pipeline (incluye contrato de cada tema)
+python -m pipeline.run <tema> --fixtures    # corre un tema sobre fixtures/grid.csv
+python -m pipeline.build --fixtures         # escribe web/public/data/cells/ desde fixtures/cells.json
+cd web && npm ci && npm run lint && npm test && npm run build
+```
+
+- Nuevo tema: copia `pipeline/topics/_template.py` a `pipeline/topics/<key>.py`. Las llaves y campos `extra` están en `contracts/topics.md`.
+- Datos crudos: `gh release download data-raw-<fecha> -R betangaranga/devin-hackathon -D data/raw` (cuando exista); estructura `data/raw/<id-ckan>/` + `data/raw/index.json`.

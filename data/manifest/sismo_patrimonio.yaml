@@ -1,0 +1,59 @@
+# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+owner: D4
+portal: https://datos.cdmx.gob.mx
+datasets:
+- id: inmuebles-en-atencion-como-parte-del-plan-integral-para-la-reconstruccion
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''
+- id: reconstruccion-multifamiliares-cdmx
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''
+- id: reconstruccion-viviendas-unifamiliares
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''
+- id: areas-de-conservacion-patrimonial
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''
+- id: inmuebles-catalogados
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''

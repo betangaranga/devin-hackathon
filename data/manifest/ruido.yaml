@@ -1,0 +1,15 @@
+# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+owner: D6
+portal: https://datos.cdmx.gob.mx
+datasets:
+- id: contaminacion-acustica-en-ciudad-de-mexico
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''

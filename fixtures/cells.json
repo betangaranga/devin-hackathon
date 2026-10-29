@@ -1,0 +1,619 @@
+[
+ {
+  "h3": "894995ba3c7ffff",
+  "colonia": "Las Arboledas (ejemplo)",
+  "cp": "06700",
+  "alcaldia": "Alcaldía Norte (ejemplo)",
+  "updated_at": "fixture",
+  "topics": {
+   "agua": {
+    "score": 78,
+    "raw": 2.1,
+    "label": "2.1 reportes / 1,000 hab.",
+    "extra": {
+     "monthly": [
+      0.1,
+      0.1,
+      0.3,
+      0.4,
+      0.3,
+      0.2,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.2
+     ],
+     "city_monthly": [
+      0.3,
+      0.3,
+      0.5,
+      0.8,
+      0.9,
+      0.7,
+      0.4,
+      0.3,
+      0.3,
+      0.4,
+      0.3,
+      0.3
+     ]
+    }
+   },
+   "inundacion": {
+    "score": 35,
+    "raw": 3,
+    "label": "Peligro medio-alto",
+    "extra": {
+     "level_label": "Peligro medio-alto"
+    }
+   },
+   "granizo": {
+    "score": 55,
+    "raw": 2,
+    "label": "Peligro medio",
+    "extra": {
+     "level_label": "Peligro medio"
+    }
+   },
+   "calor": {
+    "score": 62,
+    "raw": 17.9,
+    "label": "17.9 °C",
+    "extra": {
+     "city_min": 13.0,
+     "city_max": 20.5
+    }
+   },
+   "sismo": {
+    "score": 30,
+    "raw": 6,
+    "label": "6 inmuebles",
+    "extra": {
+     "nearby": [
+      {
+       "name": "Inmueble 1 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.417519,
+       "lon": -99.166395
+      },
+      {
+       "name": "Inmueble 2 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.420608,
+       "lon": -99.163
+      },
+      {
+       "name": "Inmueble 3 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.421561,
+       "lon": -99.165452
+      },
+      {
+       "name": "Inmueble 4 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.416223,
+       "lon": -99.161303
+      },
+      {
+       "name": "Inmueble 5 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.414231,
+       "lon": -99.161098
+      },
+      {
+       "name": "Inmueble 6 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.41693,
+       "lon": -99.165567
+      }
+     ]
+    }
+   },
+   "vial": {
+    "score": 41,
+    "raw": 84,
+    "label": "84 incidentes",
+    "extra": {
+     "monthly": [
+      6,
+      7,
+      5,
+      8,
+      9,
+      7,
+      6,
+      8,
+      7,
+      6,
+      8,
+      7
+     ],
+     "city_ratio": 1.17,
+     "hotspots": [
+      {
+       "name": "Av. Principal y Eje 5",
+       "n": 23,
+       "lat": 19.415348,
+       "lon": -99.162224
+      },
+      {
+       "name": "Av. Principal y Calle 9",
+       "n": 11,
+       "lat": 19.420722,
+       "lon": -99.167759
+      },
+      {
+       "name": "Eje 5 y Calle Roble",
+       "n": 7,
+       "lat": 19.417466,
+       "lon": -99.163645
+      }
+     ]
+    }
+   },
+   "ruido": {
+    "score": 38,
+    "raw": 71,
+    "label": "71 dB / 63 dB",
+    "extra": {
+     "db_night": 63
+    }
+   },
+   "servicios": {
+    "score": 91,
+    "raw": 6,
+    "label": "ver detalle",
+    "extra": {
+     "nearest": [
+      {
+       "kind": "salud",
+       "name": "Centro de salud (ejemplo)",
+       "minutes": 6,
+       "lat": 19.416359,
+       "lon": -99.168115
+      },
+      {
+       "kind": "escuela",
+       "name": "Escuela primaria pública (ejemplo)",
+       "minutes": 4,
+       "lat": 19.41848,
+       "lon": -99.164308
+      },
+      {
+       "kind": "mercado",
+       "name": "Mercado público (ejemplo)",
+       "minutes": 9,
+       "lat": 19.414493,
+       "lon": -99.164025
+      },
+      {
+       "kind": "transporte",
+       "name": "Metro / Metrobús (ejemplo)",
+       "minutes": 7,
+       "lat": 19.418482,
+       "lon": -99.161049
+      },
+      {
+       "kind": "ecobici",
+       "name": "Cicloestación Ecobici (ejemplo)",
+       "minutes": 3,
+       "lat": 19.419364,
+       "lon": -99.166776
+      },
+      {
+       "kind": "wifi",
+       "name": "WiFi gratuito (ejemplo)",
+       "minutes": 2,
+       "lat": 19.41748,
+       "lon": -99.164777
+      }
+     ]
+    }
+   },
+   "patrimonio": {
+    "score": null,
+    "raw": 1,
+    "label": "Dentro de área de conservación",
+    "extra": {
+     "zone_name": "Área de conservación (ejemplo)",
+     "catalogados_300m": 12
+    }
+   }
+  }
+ },
+ {
+  "h3": "894995b8457ffff",
+  "colonia": "Los Pinos (ejemplo)",
+  "cp": "06000",
+  "alcaldia": "Alcaldía Centro (ejemplo)",
+  "updated_at": "fixture",
+  "topics": {
+   "agua": {
+    "score": 64,
+    "raw": 3.4,
+    "label": "3.4 reportes / 1,000 hab.",
+    "extra": {
+     "monthly": [
+      0.2,
+      0.2,
+      0.4,
+      0.5,
+      0.5,
+      0.3,
+      0.2,
+      0.2,
+      0.2,
+      0.3,
+      0.2,
+      0.2
+     ],
+     "city_monthly": [
+      0.3,
+      0.3,
+      0.5,
+      0.8,
+      0.9,
+      0.7,
+      0.4,
+      0.3,
+      0.3,
+      0.4,
+      0.3,
+      0.3
+     ]
+    }
+   },
+   "inundacion": {
+    "score": 80,
+    "raw": 1,
+    "label": "Peligro bajo",
+    "extra": {
+     "level_label": "Peligro bajo"
+    }
+   },
+   "granizo": {
+    "score": 70,
+    "raw": 1,
+    "label": "Peligro bajo",
+    "extra": {
+     "level_label": "Peligro bajo"
+    }
+   },
+   "calor": {
+    "score": 40,
+    "raw": 18.6,
+    "label": "18.6 °C",
+    "extra": {
+     "city_min": 13.0,
+     "city_max": 20.5
+    }
+   },
+   "sismo": {
+    "score": 68,
+    "raw": 1,
+    "label": "1 inmuebles",
+    "extra": {
+     "nearby": [
+      {
+       "name": "Inmueble 1 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.436713,
+       "lon": -99.140144
+      }
+     ]
+    }
+   },
+   "vial": {
+    "score": 22,
+    "raw": 131,
+    "label": "131 incidentes",
+    "extra": {
+     "monthly": [
+      10,
+      12,
+      9,
+      11,
+      13,
+      12,
+      10,
+      11,
+      12,
+      10,
+      11,
+      10
+     ],
+     "city_ratio": 1.82,
+     "hotspots": [
+      {
+       "name": "Eje Central y Av. Juárez (ej.)",
+       "n": 38,
+       "lat": 19.43121,
+       "lon": -99.138031
+      },
+      {
+       "name": "Eje Central y Calle 3",
+       "n": 19,
+       "lat": 19.435497,
+       "lon": -99.143058
+      },
+      {
+       "name": "Calle 3 y Calle 7",
+       "n": 9,
+       "lat": 19.434067,
+       "lon": -99.141698
+      }
+     ]
+    }
+   },
+   "ruido": {
+    "score": 18,
+    "raw": 76,
+    "label": "76 dB / 69 dB",
+    "extra": {
+     "db_night": 69
+    }
+   },
+   "servicios": {
+    "score": 84,
+    "raw": 5,
+    "label": "ver detalle",
+    "extra": {
+     "nearest": [
+      {
+       "kind": "salud",
+       "name": "Centro de salud (ejemplo)",
+       "minutes": 11,
+       "lat": 19.435941,
+       "lon": -99.146603
+      },
+      {
+       "kind": "escuela",
+       "name": "Escuela primaria pública (ejemplo)",
+       "minutes": 8,
+       "lat": 19.433406,
+       "lon": -99.138519
+      },
+      {
+       "kind": "mercado",
+       "name": "Mercado público (ejemplo)",
+       "minutes": 5,
+       "lat": 19.434646,
+       "lon": -99.140561
+      },
+      {
+       "kind": "transporte",
+       "name": "Metro / Metrobús (ejemplo)",
+       "minutes": 4,
+       "lat": 19.433703,
+       "lon": -99.139978
+      },
+      {
+       "kind": "ecobici",
+       "name": "Cicloestación Ecobici (ejemplo)",
+       "minutes": 5,
+       "lat": 19.431608,
+       "lon": -99.143063
+      },
+      {
+       "kind": "wifi",
+       "name": "WiFi gratuito (ejemplo)",
+       "minutes": 1,
+       "lat": 19.433152,
+       "lon": -99.140781
+      }
+     ]
+    }
+   },
+   "patrimonio": {
+    "score": null,
+    "raw": 0,
+    "label": "Fuera de áreas de conservación",
+    "extra": {
+     "zone_name": null,
+     "catalogados_300m": 2
+    }
+   }
+  }
+ },
+ {
+  "h3": "8949958e873ffff",
+  "colonia": "Valle Verde (ejemplo)",
+  "cp": "09000",
+  "alcaldia": "Alcaldía Oriente (ejemplo)",
+  "updated_at": "fixture",
+  "topics": {
+   "agua": {
+    "score": 12,
+    "raw": 14.8,
+    "label": "14.8 reportes / 1,000 hab.",
+    "extra": {
+     "monthly": [
+      0.6,
+      0.8,
+      1.6,
+      2.4,
+      2.6,
+      1.9,
+      0.9,
+      0.7,
+      0.8,
+      0.9,
+      0.8,
+      0.8
+     ],
+     "city_monthly": [
+      0.3,
+      0.3,
+      0.5,
+      0.8,
+      0.9,
+      0.7,
+      0.4,
+      0.3,
+      0.3,
+      0.4,
+      0.3,
+      0.3
+     ]
+    }
+   },
+   "inundacion": {
+    "score": 20,
+    "raw": 4,
+    "label": "Peligro alto",
+    "extra": {
+     "level_label": "Peligro alto"
+    }
+   },
+   "granizo": {
+    "score": 40,
+    "raw": 3,
+    "label": "Peligro medio-alto",
+    "extra": {
+     "level_label": "Peligro medio-alto"
+    }
+   },
+   "calor": {
+    "score": 28,
+    "raw": 19.4,
+    "label": "19.4 °C",
+    "extra": {
+     "city_min": 13.0,
+     "city_max": 20.5
+    }
+   },
+   "sismo": {
+    "score": 45,
+    "raw": 3,
+    "label": "3 inmuebles",
+    "extra": {
+     "nearby": [
+      {
+       "name": "Inmueble 1 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.356364,
+       "lon": -99.06339
+      },
+      {
+       "name": "Inmueble 2 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.357274,
+       "lon": -99.064583
+      },
+      {
+       "name": "Inmueble 3 (ejemplo)",
+       "status": "En reconstrucción",
+       "lat": 19.355143,
+       "lon": -99.063205
+      }
+     ]
+    }
+   },
+   "vial": {
+    "score": 66,
+    "raw": 39,
+    "label": "39 incidentes",
+    "extra": {
+     "monthly": [
+      3,
+      4,
+      3,
+      2,
+      4,
+      3,
+      4,
+      3,
+      4,
+      3,
+      3,
+      3
+     ],
+     "city_ratio": 0.54,
+     "hotspots": [
+      {
+       "name": "Av. Oriente y Calle 12",
+       "n": 9,
+       "lat": 19.358217,
+       "lon": -99.063194
+      },
+      {
+       "name": "Av. Oriente y Calle 20",
+       "n": 6,
+       "lat": 19.355355,
+       "lon": -99.063709
+      },
+      {
+       "name": "Calle 12 y Calle Sur",
+       "n": 3,
+       "lat": 19.355623,
+       "lon": -99.063222
+      }
+     ]
+    }
+   },
+   "ruido": {
+    "score": 74,
+    "raw": 62,
+    "label": "62 dB / 52 dB",
+    "extra": {
+     "db_night": 52
+    }
+   },
+   "servicios": {
+    "score": 46,
+    "raw": 8,
+    "label": "ver detalle",
+    "extra": {
+     "nearest": [
+      {
+       "kind": "salud",
+       "name": "Centro de salud (ejemplo)",
+       "minutes": 14,
+       "lat": 19.356848,
+       "lon": -99.071633
+      },
+      {
+       "kind": "escuela",
+       "name": "Escuela primaria pública (ejemplo)",
+       "minutes": 6,
+       "lat": 19.353625,
+       "lon": -99.063006
+      },
+      {
+       "kind": "mercado",
+       "name": "Mercado público (ejemplo)",
+       "minutes": 8,
+       "lat": 19.357549,
+       "lon": -99.061877
+      },
+      {
+       "kind": "transporte",
+       "name": "Metro / Metrobús (ejemplo)",
+       "minutes": 22,
+       "lat": 19.3458,
+       "lon": -99.070339
+      },
+      {
+       "kind": "wifi",
+       "name": "WiFi gratuito (ejemplo)",
+       "minutes": 4,
+       "lat": 19.355447,
+       "lon": -99.065909
+      }
+     ]
+    }
+   },
+   "patrimonio": {
+    "score": null,
+    "raw": 0,
+    "label": "Fuera de áreas de conservación",
+    "extra": {
+     "zone_name": null,
+     "catalogados_300m": 0
+    }
+   }
+  }
+ }
+]

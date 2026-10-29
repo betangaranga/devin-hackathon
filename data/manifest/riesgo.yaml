@@ -1,0 +1,37 @@
+# Ids from the Feb-2026 catalog snapshot; not yet verified against the live API.
+owner: D3
+portal: https://datos.cdmx.gob.mx
+datasets:
+- id: atlas-de-riesgo-precipitacion
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''
+- id: atlas-de-riesgo-granizo
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''
+- id: zonas-de-distribucion-de-temperatura-media-anual-en-la-ciudad-de-mexico
+  formats:
+  - geojson
+  - shp
+  - csv
+  crs: null
+  date_column: null
+  update_frequency: null
+  license: null
+  verified: false
+  notes: ''

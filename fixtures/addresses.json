@@ -1,0 +1,29 @@
+[
+ {
+  "id": "a",
+  "label": "Calle Ejemplo 120, Col. Las Arboledas",
+  "colonia": "Las Arboledas (ejemplo)",
+  "cp": "06700",
+  "lat": 19.418,
+  "lon": -99.165,
+  "h3": "894995ba3c7ffff"
+ },
+ {
+  "id": "b",
+  "label": "Calle Ficticia 45, Col. Los Pinos",
+  "colonia": "Los Pinos (ejemplo)",
+  "cp": "06000",
+  "lat": 19.433,
+  "lon": -99.141,
+  "h3": "894995b8457ffff"
+ },
+ {
+  "id": "c",
+  "label": "Calle Modelo 8, Col. Valle Verde",
+  "colonia": "Valle Verde (ejemplo)",
+  "cp": "09000",
+  "lat": 19.357,
+  "lon": -99.065,
+  "h3": "8949958e873ffff"
+ }
+]
